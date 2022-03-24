@@ -1,12 +1,25 @@
 import './App.scss';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import Navigation from './components/Navigation/Navigation';
+import HomePage from './pages/HomePage/HomePage';
+// import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <Router>
+        {/* <Header /> */}
+        <Switch>
+          <Route path= '/' exact render={(routerProps) =>
+          <HomePage {...routerProps}/>
+                } />
 
-    </div>
+        </Switch>
+        {/* <Footer /> */}
+      </Router>
+
+    </>
   );
 }
 
