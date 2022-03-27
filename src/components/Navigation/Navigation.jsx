@@ -1,20 +1,20 @@
 import './Navigation.scss';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default function Navigation() {
 
     return (
         <nav className='nav'>
-            <Link to='/' exact>
+            <NavLink to='/'>
                 <img className='nav__logo' src="" alt="recipe logo" />
-            </Link>
+            </NavLink>
             <div>
-                <Link to=''>
+                <NavLink to='/'>
                     <p>Faves</p>
-                </Link>
-                <Link to=''>
+                </NavLink>
+                <NavLink to='/'>
                     <p>About</p>
-                </Link>
+                </NavLink>
 
             </div>
         </nav>
