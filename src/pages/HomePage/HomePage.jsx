@@ -10,7 +10,7 @@ export default class HomePage extends Component {
         selectedRecipe: {}
     };
 
-    componentDidMount() {
+    componentDidUpdate() {
         this.getRecipesByIngredients();
     }
 
