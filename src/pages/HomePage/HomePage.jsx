@@ -2,14 +2,21 @@ import "./HomePage.scss";
 import { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import { RecipeCards } from "../../components/RecipeCards/RecipeCards";
+// import RecipePage from "../RecipePage/RecipePage";
+import RecipeCards from "../../components/RecipeCards/RecipeCards";
 
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
+// const apiKey2 = "68bf58bbf64a42ed81a11aad8a2f4547";
 
 export default class HomePage extends Component {
   state = {
     recipesByIngredients: [],
-    selectedRecipe: {},
+    selectedRecipe: [],
+    //     // ingredient1: '',
+    //     // ingredient2: '',
+    //     // ingredient3: '',
+    //     // ingredient4: '',
+    //     // ingredient5: '',
   };
 
   //Mounting
@@ -21,12 +28,8 @@ export default class HomePage extends Component {
   componentDidUpdate(prevProps, prevState) {
     // console.log('component did update');
 
-    // let recipeId = this.props.match.params.id;
-    // if(recipeId) {
-    //   if (recipeId !== this.props.match.params.id)
-    //     this.getSingleRecipe(recipeId);
-
     if (this.props.match.params.id) {
+      console.log(this.props.match.params.id);
       if (prevProps.match.params.id !== this.props.match.params.id) {
         this.getSingleRecipe(this.props.match.params.id);
       }
@@ -59,7 +62,7 @@ export default class HomePage extends Component {
         `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=eggs,+bacon,+avocado&number=3`
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         this.setState({
           recipesByIngredients: res.data,
         });
@@ -69,11 +72,20 @@ export default class HomePage extends Component {
       });
   }
 
+  // handleIngredients = event => {
+  //   this.setState ({
+  //       [[event.target.name]: event.target.value,
+
+  //   })
+  // }
+
   render() {
     console.log(this.props);
+    console.log(this.state.recipesByIngredients);
+    console.log(this.state.selectedRecipe);
+
     return (
       <div>
-        <h1>Spoonacular test</h1>
         <header className="header">
           <div className="header__left-box">
             <h1 className="header__title">Simplify your life</h1>
@@ -81,7 +93,7 @@ export default class HomePage extends Component {
               <p className="header__btn">Learn More</p>
             </Link>
           </div>
-          <img src="" alt="photo of plate" />
+          <img src="" alt="food on a plate" />
         </header>
         <main className="main">
           <section className="main__box main__box--left">
@@ -132,26 +144,45 @@ export default class HomePage extends Component {
             <button className="main__box">7</button>
           </section>
           <div>
-            {/* <RecipeCards 
-                title={}
-              /> */}
-            <ul>
-              <li key={this.state.selectedRecipe.id}>
-                <h2>
-                  {this.state.selectedRecipe.title}
-                </h2>
-                <p>
-                  {this.state.selectedRecipe.servings}
-                </p>
-                <p>
-                  {this.state.selectedRecipe.extendedIngredients}
-                </p>
-              </li>
-            </ul>
+            <div>
+              {this.state.recipesByIngredients && this.state.recipesByIngredients
+              .map(dataRecipeCard => (
+              <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+              <RecipeCards recipe={dataRecipeCard} />
+              </Link>
+              ))}
+            </div>
+            
+
+            {/* <RecipePage
+              image={this.state.selectedRecipe.image}
+              title={this.state.selectedRecipe.title}
+              servings={this.state.selectedRecipe.servings}
+              summary={this.state.selectedRecipe.summary}
+              ingredients={
+                this.state.selectedRecipe.extendedIngredients &&
+                this.state.selectedRecipe.extendedIngredients.map(
+                  (ingredient) => ingredient.name
+                )
+              }
+            /> */}
+            <div>
+              <h2>{this.state.selectedRecipe.title}</h2>
+              <p>{this.state.selectedRecipe.servings}</p>
+              <p>
+                {this.state.selectedRecipe.extendedIngredients &&
+                this.state.selectedRecipe.extendedIngredients.map(
+                  (ingredient) => ingredient.name)}
+              </p>
+            </div>
+
+            {/* let recipeIngredients = this.state.selectedRecipe.extendedIngredients.map(ingredient => 
+                ingredient.name) 
+              ) */}
             <ul>
               {this.state.recipesByIngredients.map((dataRecipe) => (
-                <Link to={`/recipe/${dataRecipe.id}`}>
-                  <li key={dataRecipe.id}>
+                <Link to={`/recipe/${dataRecipe.id}`} key={dataRecipe.id}>
+                  <li>
                     <img src={dataRecipe.image} alt={dataRecipe.title} />
                     <div>
                       <h3>{dataRecipe.title}</h3>
