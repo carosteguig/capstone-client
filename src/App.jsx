@@ -32,7 +32,7 @@ export default function App () {
           <Route 
             path='/recipe/:id' 
             render={(routerProps) =>
-            <HomePage {...routerProps} />
+            <RecipePage {...routerProps} />
           } />
           <Route 
             path='/about' exact 

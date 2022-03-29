@@ -16,8 +16,8 @@ console.log(props);
                 <p>{props.recipe.likes}</p>
                 </div>
                 <div>
-                <p>N. of Ingredients</p>
-                <p>{props.recipe.usedIngredientCount}</p>
+                {/* <p>N. of Ingredients</p>
+                <p>{props.recipe.usedIngredientCount}</p> */}
                 </div>
               </div>
             </li>

@@ -1,12 +1,14 @@
 import "./HomePage.scss";
 import { Component } from "react";
 import axios from "axios";
+import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 // import RecipePage from "../RecipePage/RecipePage";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
 
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 // const apiKey2 = "68bf58bbf64a42ed81a11aad8a2f4547";
+// const parse = require('html-react-parser');
 
 export default class HomePage extends Component {
   state = {
@@ -59,7 +61,7 @@ export default class HomePage extends Component {
   getRecipesByIngredients() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=avocado,+peppers,+cheese&number=3`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=pepper&number=4`
       )
       .then((res) => {
         console.log(res);
@@ -80,10 +82,12 @@ export default class HomePage extends Component {
   // }
 
   render() {
-    console.log(this.props);
-    console.log(this.state.recipesByIngredients);
-    console.log(this.props.match.params);
-    console.log(this.state.selectedRecipe);
+    // console.log(this.props);
+    // console.log(this.state.recipesByIngredients);
+    // console.log(this.props.match.params);
+    // console.log(this.state.selectedRecipe);
+
+    // const parse = require('html-react-parser');
 
     return (
       <div>
@@ -146,17 +150,6 @@ export default class HomePage extends Component {
           </section>
 
           <div>
-              <h2>{this.state.selectedRecipe.title}</h2>
-              <p>{this.state.selectedRecipe.servings}</p>
-              <p>{this.state.selectedRecipe.summary}</p>
-              <p>
-                {this.state.selectedRecipe.extendedIngredients &&
-                this.state.selectedRecipe.extendedIngredients.map(
-                  (ingredient) => ingredient.name)}
-              </p>
-            </div>
-
-          <div>
             <div>
               {this.state.recipesByIngredients && this.state.recipesByIngredients
               .map(dataRecipeCard => (
@@ -166,8 +159,6 @@ export default class HomePage extends Component {
               ))}
             </div>
           </div>
-
-          
 
         </main>
       </div>
@@ -188,15 +179,16 @@ export default class HomePage extends Component {
                 )
               }
             /> */}
-            //  <div>
+            // <div>
             //   <h2>{this.state.selectedRecipe.title}</h2>
             //   <p>{this.state.selectedRecipe.servings}</p>
+            //   {parse(`${this.state.selectedRecipe.summary}`)}
             //   <p>
             //     {this.state.selectedRecipe.extendedIngredients &&
             //     this.state.selectedRecipe.extendedIngredients.map(
             //       (ingredient) => ingredient.name)}
             //   </p>
-            // </div> 
+            // </div>
 
             {/* let recipeIngredients = this.state.selectedRecipe.extendedIngredients.map(ingredient => 
                 ingredient.name) 
