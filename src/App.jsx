@@ -24,11 +24,11 @@ export default function App () {
             render={(routerProps) =>
             <HomePage {...routerProps} />
           } />
-          <Route 
+          {/* <Route 
             path='/recipe' exact
             render={(routerProps) =>
             <RecipePage {...routerProps} />
-          } />
+          } /> */}
           <Route 
             path='/recipe/:id' 
             render={(routerProps) =>

@@ -11,7 +11,7 @@ const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 export default class HomePage extends Component {
   state = {
     recipesByIngredients: [],
-    selectedRecipe: [],
+    selectedRecipe: {},
     //     // ingredient1: '',
     //     // ingredient2: '',
     //     // ingredient3: '',
@@ -59,7 +59,7 @@ export default class HomePage extends Component {
   getRecipesByIngredients() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=eggs,+bacon,+avocado&number=3`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=avocado,+peppers,+cheese&number=3`
       )
       .then((res) => {
         console.log(res);
@@ -82,13 +82,14 @@ export default class HomePage extends Component {
   render() {
     console.log(this.props);
     console.log(this.state.recipesByIngredients);
+    console.log(this.props.match.params);
     console.log(this.state.selectedRecipe);
 
     return (
       <div>
         <header className="header">
           <div className="header__left-box">
-            <h1 className="header__title">Simplify your life</h1>
+            <h1 className="header__title">Simplify your life by quickly selecting recipes</h1>
             <Link to="">
               <p className="header__btn">Learn More</p>
             </Link>
@@ -143,18 +144,39 @@ export default class HomePage extends Component {
             <button className="main__box">6</button>
             <button className="main__box">7</button>
           </section>
+
+          <div>
+              <h2>{this.state.selectedRecipe.title}</h2>
+              <p>{this.state.selectedRecipe.servings}</p>
+              <p>{this.state.selectedRecipe.summary}</p>
+              <p>
+                {this.state.selectedRecipe.extendedIngredients &&
+                this.state.selectedRecipe.extendedIngredients.map(
+                  (ingredient) => ingredient.name)}
+              </p>
+            </div>
+
           <div>
             <div>
               {this.state.recipesByIngredients && this.state.recipesByIngredients
               .map(dataRecipeCard => (
-              <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+              <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}> {/** I tried adding {this.props.match.params.id} to the route but didn't work*/}
               <RecipeCards recipe={dataRecipeCard} />
               </Link>
               ))}
             </div>
-            
+          </div>
 
-            {/* <RecipePage
+          
+
+        </main>
+      </div>
+    );
+  }
+}
+
+
+ {/* <RecipePage
               image={this.state.selectedRecipe.image}
               title={this.state.selectedRecipe.title}
               servings={this.state.selectedRecipe.servings}
@@ -166,20 +188,20 @@ export default class HomePage extends Component {
                 )
               }
             /> */}
-            <div>
-              <h2>{this.state.selectedRecipe.title}</h2>
-              <p>{this.state.selectedRecipe.servings}</p>
-              <p>
-                {this.state.selectedRecipe.extendedIngredients &&
-                this.state.selectedRecipe.extendedIngredients.map(
-                  (ingredient) => ingredient.name)}
-              </p>
-            </div>
+            //  <div>
+            //   <h2>{this.state.selectedRecipe.title}</h2>
+            //   <p>{this.state.selectedRecipe.servings}</p>
+            //   <p>
+            //     {this.state.selectedRecipe.extendedIngredients &&
+            //     this.state.selectedRecipe.extendedIngredients.map(
+            //       (ingredient) => ingredient.name)}
+            //   </p>
+            // </div> 
 
             {/* let recipeIngredients = this.state.selectedRecipe.extendedIngredients.map(ingredient => 
                 ingredient.name) 
               ) */}
-            <ul>
+            {/* <ul>
               {this.state.recipesByIngredients.map((dataRecipe) => (
                 <Link to={`/recipe/${dataRecipe.id}`} key={dataRecipe.id}>
                   <li>
@@ -198,10 +220,4 @@ export default class HomePage extends Component {
                   </li>
                 </Link>
               ))}
-            </ul>
-          </div>
-        </main>
-      </div>
-    );
-  }
-}
+            </ul> */}
