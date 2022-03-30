@@ -44,10 +44,8 @@ export default class RecipePage extends Component {
                 </header>
                 <main>
                     <h1>{this.state.selectedRecipe.title}</h1>
-                    <p>Servings:</p>
-                    <h4>{this.state.selectedRecipe.servings}</h4>
-                    <p>Minutes to cook:</p>
-                    <h4>{this.state.selectedRecipe.readyInMinutes}</h4>
+                    <h4>Servings: {this.state.selectedRecipe.servings}</h4>
+                    <h4>Prep time: {this.state.selectedRecipe.readyInMinutes} minutes</h4>
                     {parse(`${this.state.selectedRecipe.summary}`)}
                     <h3>Ingredients</h3>
                     {/* Collecting steps instruction from objects inside and array */}

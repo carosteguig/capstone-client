@@ -12,8 +12,7 @@ console.log(props);
               <div>
                 <h3>{props.recipe.title}</h3>
                 <div>
-                <p>Likes:</p>
-                <p>{props.recipe.likes}</p>
+                <p>Likes: {props.recipe.likes}</p>
                 </div>
                 <div>
                 {/* <p>N. of Ingredients</p>
