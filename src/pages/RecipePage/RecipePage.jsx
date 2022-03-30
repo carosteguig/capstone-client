@@ -12,6 +12,7 @@ export default class RecipePage extends Component {
     }
 
     componentDidMount() {
+        // Using dinamic id collected using props.match from the gerRecipesByIngredients API call function
         this.getSingleRecipe(this.props.match.params.id);
     }
 
@@ -43,12 +44,11 @@ export default class RecipePage extends Component {
                 </header>
                 <main>
                     <h1>{this.state.selectedRecipe.title}</h1>
-                    <p>Servings:</p>
-                    <h4>{this.state.selectedRecipe.servings}</h4>
-                    <p>Minutes to cook:</p>
-                    <h4>{this.state.selectedRecipe.readyInMinutes}</h4>
+                    <h4>Servings: {this.state.selectedRecipe.servings}</h4>
+                    <h4>Prep time: {this.state.selectedRecipe.readyInMinutes} minutes</h4>
                     {parse(`${this.state.selectedRecipe.summary}`)}
                     <h3>Ingredients</h3>
+                    {/* Collecting steps instruction from objects inside and array */}
                     <ul>
                             {this.state.selectedRecipe.extendedIngredients &&
                                 this.state.selectedRecipe.extendedIngredients.map(
@@ -56,6 +56,7 @@ export default class RecipePage extends Component {
 
                     </ul>
                     <h3>Steps</h3>
+                    {/* Collecting steps instruction from objects inside and array */}
                     <ol>
                         {this.state.selectedRecipe.analyzedInstructions &&
                                 this.state.selectedRecipe.analyzedInstructions[0].steps.map(
