@@ -65,6 +65,7 @@ export default class RecipePage extends Component {
                                     (step) => <li key={step.number}>{step.step}</li>)}
                     
                     </ol>
+                    <button>+ Favourites</button>
                     
 
                 </main>
