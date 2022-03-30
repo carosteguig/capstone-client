@@ -3,10 +3,12 @@ import { Component } from "react";
 import axios from 'axios';
 import parse from "html-react-parser";
 
+// API key
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 
 export default class RecipePage extends Component {
 
+    // Setting state for single recipe
     state = {
         selectedRecipe: {},
     }
@@ -16,7 +18,7 @@ export default class RecipePage extends Component {
         this.getSingleRecipe(this.props.match.params.id);
     }
 
-    // // Getting single recipe
+    // Getting single recipe
     getSingleRecipe(id) {
         console.log("getSingleRecipe", id);
         axios
@@ -63,6 +65,7 @@ export default class RecipePage extends Component {
                                     (step) => <li key={step.number}>{step.step}</li>)}
                     
                     </ol>
+                    
 
                 </main>
             </>
