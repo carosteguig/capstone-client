@@ -1,7 +1,6 @@
 import "./HomePage.scss";
 import { Component } from "react";
 import axios from "axios";
-import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 // import RecipePage from "../RecipePage/RecipePage";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
@@ -14,11 +13,11 @@ export default class HomePage extends Component {
   state = {
     recipesByIngredients: [],
     selectedRecipe: {},
-    //     // ingredient1: '',
-    //     // ingredient2: '',
-    //     // ingredient3: '',
-    //     // ingredient4: '',
-    //     // ingredient5: '',
+    ingredient1: '',
+    ingredient2: '',
+    ingredient3: '',
+    ingredient4: '',
+    ingredient5: '',
   };
 
   //Mounting
@@ -26,42 +25,13 @@ export default class HomePage extends Component {
     this.getRecipesByIngredients();
   }
 
-  //this runs many times!
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('component did update');
-
-    if (this.props.match.params.id) {
-      console.log(this.props.match.params.id);
-      if (prevProps.match.params.id !== this.props.match.params.id) {
-        this.getSingleRecipe(this.props.match.params.id);
-      }
-      // }
-    }
-  }
-
-  // Getting single recipe
-  getSingleRecipe(id) {
-    console.log("getSingleRecipe", id);
-    axios
-      .get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
-      )
-      .then((res) => {
-        console.log(res);
-        this.setState({
-          selectedRecipe: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   //Getting the recipes from the ingredients added
   getRecipesByIngredients() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=pepper&number=4`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=eggs,${this.state.ingredient1},+${this.state.ingredient2},
+        +${this.state.ingredient3},+${this.state.ingredient4},+${this.state.ingredient5}&number=4`
       )
       .then((res) => {
         console.log(res);
@@ -74,12 +44,15 @@ export default class HomePage extends Component {
       });
   }
 
-  // handleIngredients = event => {
-  //   this.setState ({
-  //       [[event.target.name]: event.target.value,
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-  //   })
-  // }
+  callApi
+
+
 
   render() {
     // console.log(this.props);
@@ -101,62 +74,77 @@ export default class HomePage extends Component {
           <img src="" alt="food on a plate" />
         </header>
         <main className="main">
-          <section className="main__box main__box--left">
-            <p className="main__box-title">
-              Add the ingredients you want in your recipe/s
-            </p>
-            <input
-              className="main__box-input"
-              type="text"
-              name="ingredient1"
-              placeholder="Add ingredient..."
-            />
-            <input
-              className="main__box-input"
-              type="text"
-              name="ingredient2"
-              placeholder="Add ingredient..."
-            />
-            <input
-              className="main__box-input"
-              type="text"
-              name="ingredient3"
-              placeholder="Add ingredient..."
-            />
-            <input
-              className="main__box-input"
-              type="text"
-              name="ingredient4"
-              placeholder="Add ingredient..."
-            />
-            <input
-              className="main__box-input"
-              type="text"
-              name="ingredient5"
-              placeholder="Add ingredient..."
-            />
-          </section>
-          <section className="main__box main__box--left">
-            <p className="main__box-title">
-              Select the number of recipe/s you want to display
-            </p>
-            <button className="main__box">1</button>
-            <button className="main__box">2</button>
-            <button className="main__box">3</button>
-            <button className="main__box">4</button>
-            <button className="main__box">5</button>
-            <button className="main__box">6</button>
-            <button className="main__box">7</button>
-          </section>
+          <form>
+            <section className="main__box main__box--left">
+              <p className="main__box-title">
+                Add the ingredients you want in your recipe/s
+              </p>
+              <input
+                className="main__box-input"
+                type="text"
+                name="ingredient1"
+                placeholder="Add ingredient..."
+                onChange={this.handleChange}
+              />
+              <input
+                className="main__box-input"
+                type="text"
+                name="ingredient2"
+                placeholder="Add ingredient..."
+                onChange={this.handleChange}
+              />
+              <input
+                className="main__box-input"
+                type="text"
+                name="ingredient3"
+                placeholder="Add ingredient..."
+                onChange={this.handleChange}
+              />
+              <input
+                className="main__box-input"
+                type="text"
+                name="ingredient4"
+                placeholder="Add ingredient..."
+                onChange={this.handleChange}
+              />
+              <input
+                className="main__box-input"
+                type="text"
+                name="ingredient5"
+                placeholder="Add ingredient..."
+                onChange={this.handleChange}
+              />
 
+            </section>
+            <section className="main__box main__box--left">
+              <p className="main__box-title">
+                Select the number of recipe/s you want to display
+              </p>
+              {/* <button className="main__box" type="button" onClick={callApi}>1</button>
+              <button className="main__box" type="button" onClick={callApi}>2</button>
+              <button className="main__box" type="button" onClick={callApi}>3</button>
+              <button className="main__box" type="button" onClick={callApi}>4</button>
+              <button className="main__box" type="button" onClick={callApi}>5</button>
+              <button className="main__box" type="button" onClick={callApi}>6</button>
+              <button className="main__box" type="button" onClick={callApi}>7</button> */}
+           
+              <button className="main__box" type="button">1</button>
+              <button className="main__box" type="button">2</button>
+              <button className="main__box" type="button">3</button>
+              <button className="main__box" type="button">4</button>
+              <button className="main__box" type="button">5</button>
+              <button className="main__box" type="button">6</button>
+              <button className="main__box" type="button">7</button>
+            </section>
+          </form>
           <div>
             <div>
               {this.state.recipesByIngredients && this.state.recipesByIngredients
-              .map(dataRecipeCard => (
-              <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}> {/** I tried adding {this.props.match.params.id} to the route but didn't work*/}
-              <RecipeCards recipe={dataRecipeCard} />
-              </Link>
-              ))}
+                .map(dataRecipeCard => (
+                  <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}> {/** I tried adding {this.props.match.params.id} to the route but didn't work*/}
+                    <RecipeCards recipe={dataRecipeCard} />
+                  </Link>
+                ))}
             </div>
           </div>
 
@@ -167,49 +155,3 @@ export default class HomePage extends Component {
 }
 
 
- {/* <RecipePage
-              image={this.state.selectedRecipe.image}
-              title={this.state.selectedRecipe.title}
-              servings={this.state.selectedRecipe.servings}
-              summary={this.state.selectedRecipe.summary}
-              ingredients={
-                this.state.selectedRecipe.extendedIngredients &&
-                this.state.selectedRecipe.extendedIngredients.map(
-                  (ingredient) => ingredient.name
-                )
-              }
-            /> */}
-            // <div>
-            //   <h2>{this.state.selectedRecipe.title}</h2>
-            //   <p>{this.state.selectedRecipe.servings}</p>
-            //   {parse(`${this.state.selectedRecipe.summary}`)}
-            //   <p>
-            //     {this.state.selectedRecipe.extendedIngredients &&
-            //     this.state.selectedRecipe.extendedIngredients.map(
-            //       (ingredient) => ingredient.name)}
-            //   </p>
-            // </div>
-
-            {/* let recipeIngredients = this.state.selectedRecipe.extendedIngredients.map(ingredient => 
-                ingredient.name) 
-              ) */}
-            {/* <ul>
-              {this.state.recipesByIngredients.map((dataRecipe) => (
-                <Link to={`/recipe/${dataRecipe.id}`} key={dataRecipe.id}>
-                  <li>
-                    <img src={dataRecipe.image} alt={dataRecipe.title} />
-                    <div>
-                      <h3>{dataRecipe.title}</h3>
-                      <div>
-                        <p>Likes:</p>
-                        <p>{dataRecipe.likes}</p>
-                      </div>
-                      <div>
-                        <p>N. of Ingredients</p>
-                        <p>{dataRecipe.usedIngredientCount}</p>
-                      </div>
-                    </div>
-                  </li>
-                </Link>
-              ))}
-            </ul> */}
