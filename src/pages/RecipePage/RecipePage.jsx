@@ -37,8 +37,32 @@ export default class RecipePage extends Component {
     }
 
 
+    // post recipes and seving them to faves page
+    postRecipe() {
+        const recipeId = this.state.selectedRecipe.id;
+        const recipeTitle = this.state.selectedRecipe.title;
+        const recipeImage = this.state.selectedRecipe.image;
+        console.log(this.state.selectedRecipe.id);
+        // Post fave recipe to server
+        axios
+            .post(`${process.env.REACT_APP_API_URL}/recipe/${recipeId}`, {
+                id: recipeId,
+                title: recipeTitle,
+                image: recipeImage,
+            })
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => console.log(err));
+
+
+    }
+
+
+
+
     render() {
-        console.log(this.state.selectedRecipe);
+        console.log(this.state.selectedRecipe.id);
         return (
             <>
                 <header>
@@ -65,7 +89,7 @@ export default class RecipePage extends Component {
                                     (step) => <li key={step.number}>{step.step}</li>)}
                     
                     </ol>
-                    <button>+ Favourites</button>
+                    <button /*onClick={() => postRecipe()}*/>+ Favourites</button>
                     
 
                 </main>

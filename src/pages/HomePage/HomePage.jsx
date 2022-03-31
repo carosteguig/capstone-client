@@ -38,6 +38,7 @@ export default class HomePage extends Component {
       .catch((err) => {
         console.log(err);
       });
+      
   }
 
   // Collecting form data
