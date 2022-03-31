@@ -8,16 +8,11 @@ console.log(props);
         <ul>
           {/* {props && props.map((dataRecipe) => ( */}
             <li key={props.recipe.id}>
+              <div>
               <img src={props.recipe.image} alt={props.recipe.title} />
+              </div>
               <div>
                 <h3>{props.recipe.title}</h3>
-                <div>
-                <p>Likes: {props.recipe.likes}</p>
-                </div>
-                <div>
-                {/* <p>N. of Ingredients</p>
-                <p>{props.recipe.usedIngredientCount}</p> */}
-                </div>
               </div>
             </li>
           {/* ))} */}

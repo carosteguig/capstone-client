@@ -19,7 +19,7 @@ export default class RecipePage extends Component {
     }
 
     // Getting single recipe
-    getSingleRecipe(id) {
+    getSingleRecipe = (id) => {
         console.log("getSingleRecipe", id);
         axios
             .get(
@@ -38,31 +38,31 @@ export default class RecipePage extends Component {
 
 
     // post recipes and seving them to faves page
-    postRecipe() {
+    // postRecipe = () => 
+    postRecipe = () => {
         const recipeId = this.state.selectedRecipe.id;
         const recipeTitle = this.state.selectedRecipe.title;
         const recipeImage = this.state.selectedRecipe.image;
         console.log(this.state.selectedRecipe.id);
         // Post fave recipe to server
         axios
-            .post(`${process.env.REACT_APP_API_URL}/recipe/${recipeId}`, {
+            .post(`${process.env.REACT_APP_API_URL}/recipes` /*not sure if this is correct*/, {
                 id: recipeId,
                 title: recipeTitle,
                 image: recipeImage,
             })
             .then((res) => {
                 console.log(res)
+                console.log('your recipe has been posted')
             })
             .catch((err) => console.log(err));
-
-
     }
 
 
 
 
     render() {
-        console.log(this.state.selectedRecipe.id);
+        // console.log(this.state.selectedRecipe.id);
         return (
             <>
                 <header>
@@ -76,21 +76,21 @@ export default class RecipePage extends Component {
                     <h3>Ingredients</h3>
                     {/* Collecting steps instruction from objects inside and array */}
                     <ul>
-                            {this.state.selectedRecipe.extendedIngredients &&
-                                this.state.selectedRecipe.extendedIngredients.map(
-                                    (ingredient) => <li key={ingredient.id}>{ingredient.original}</li>)}
+                        {this.state.selectedRecipe.extendedIngredients &&
+                            this.state.selectedRecipe.extendedIngredients.map(
+                                (ingredient) => <li key={ingredient.id}>{ingredient.original}</li>)}
 
                     </ul>
                     <h3>Steps</h3>
                     {/* Collecting steps instruction from objects inside and array */}
                     <ol>
                         {this.state.selectedRecipe.analyzedInstructions &&
-                                this.state.selectedRecipe.analyzedInstructions[0].steps.map(
-                                    (step) => <li key={step.number}>{step.step}</li>)}
-                    
+                            this.state.selectedRecipe.analyzedInstructions[0].steps.map(
+                                (step) => <li key={step.number}>{step.step}</li>)}
+
                     </ol>
-                    <button /*onClick={() => postRecipe()}*/>+ Favourites</button>
-                    
+                    <button onClick={this.postRecipe}/*{() => postRecipe()}*/>+ Favourites</button>
+
 
                 </main>
             </>

@@ -9,7 +9,7 @@ export default function Navigation() {
                 <img className='nav__logo' src="" alt="recipe logo" />
             </NavLink>
             <div>
-                <NavLink to='/'>
+                <NavLink to='/faves'>
                     <p>Faves</p>
                 </NavLink>
                 <NavLink to='/'>
