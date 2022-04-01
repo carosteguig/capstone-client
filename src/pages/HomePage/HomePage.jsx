@@ -2,14 +2,14 @@ import "./HomePage.scss";
 import { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import RecipePage from "../RecipePage/RecipePage";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
 
+// API key
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
-// const apiKey2 = "68bf58bbf64a42ed81a11aad8a2f4547";
-// const parse = require('html-react-parser');
 
 export default class HomePage extends Component {
+
+  // Setting state for recipes info and form inputs
   state = {
     recipesByIngredients: [],
     ingredient1: '',
@@ -19,40 +19,20 @@ export default class HomePage extends Component {
     ingredient5: '',
   };
 
-  // //Mounting
-  // componentDidMount() {
-  //   this.getRecipesByIngredients();
-  // }
-
-
-  //Getting the recipes from the ingredients added
-  // getRecipesByIngredients(ing1) {
-  //   console.log(this.state.ingredient1)
-  //   axios
-  //     .get(
-  //       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=eggs,${ing1},+${this.state.ingredient2},
-  //       +${this.state.ingredient3},+${this.state.ingredient4},+${this.state.ingredient5}&number=4`
-  //     )
-  //     .then((res) => {
-  //       console.log(res);
-  //       this.setState({
-  //         recipesByIngredients: res.data,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
-
-  // callApi(event) {
-  //   event.preventDefault();
-  //   this.getRecipesByIngredients(this.state.ingredient1);
-  //   console.log(this.state.ingredient1)
-  //   event.target.reset();
-  // }
-  //Calling the API using dinamic even.target.value data on the API url.
+ 
+  // Calling the API using dinamic even.target.value data on the API url.
+  // Had to turn this function into a arrow function in order to work.
   callApi = (num) => {
+    // Taking the values from the ingredient inputs and number of recipes selected to be saved in session storage.
+    sessionStorage.setItem('number', num)
+    sessionStorage.setItem('ing1', this.state.ingredient1)
+    sessionStorage.setItem('ing2', this.state.ingredient2)
+    sessionStorage.setItem('ing3', this.state.ingredient3)
+    sessionStorage.setItem('ing4', this.state.ingredient4)
+    sessionStorage.setItem('ing5', this.state.ingredient5)
+
     console.log(this.state.ingredient1)
+    this.setState({number: num})
     axios
       .get(
         `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${this.state.ingredient1},+${this.state.ingredient2},
@@ -67,20 +47,40 @@ export default class HomePage extends Component {
       .catch((err) => {
         console.log(err);
       });
+      
   }
 
+  // Collecting form data.
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
+  // Using DidMount to set session storage.
+  componentDidMount() {
+    const savedNum = sessionStorage.getItem('number');
+    const savedIng1 = sessionStorage.getItem('ing1');
+    const savedIng2 = sessionStorage.getItem('ing2');
+    const savedIng3 = sessionStorage.getItem('ing3');
+    const savedIng4 = sessionStorage.getItem('ing4');
+    const savedIng5 = sessionStorage.getItem('ing5');
+    // I number is not null, do this.
+    if (savedNum !== null) {
+    this.setState({
+      ingredient1: savedIng1,
+      ingredient2: savedIng2,
+      ingredient3: savedIng3,
+      ingredient4: savedIng4,
+      ingredient5: savedIng5,
+    },
+    () => {
+      this.callApi(savedNum)
+    }
+    )}
+  }
+
   render() {
-    // console.log(this.props);
-    // console.log(this.state.recipesByIngredients);
-    // console.log(this.props.match.params.id);
-    // console.log(this.state.selectedRecipe);
-    // const parse = require('html-react-parser');
 
     return (
       <div>
@@ -94,7 +94,7 @@ export default class HomePage extends Component {
           <img src="" alt="food on a plate" />
         </header>
         <main className="main">
-          <form /*onSubmit={this.callApi}*/>
+          <form>
             <section className="main__box main__box--left">
               <p className="main__box-title">
                 Add the ingredients you want in your recipe/s
@@ -104,6 +104,7 @@ export default class HomePage extends Component {
                 type="text"
                 name="ingredient1"
                 placeholder="Add ingredient..."
+                // passing form data
                 onChange={this.handleChange}
               />
               <input
@@ -147,6 +148,9 @@ export default class HomePage extends Component {
               <button className="main__box" type="button" onClick={() => this.callApi(5)}>5</button>
               <button className="main__box" type="button" onClick={() => this.callApi(6)}>6</button>
               <button className="main__box" type="button" onClick={() => this.callApi(7)}>7</button>
+              <button className="main__box" type="button" onClick={() => this.callApi(8)}>8</button>
+              <button className="main__box" type="button" onClick={() => this.callApi(9)}>9</button>
+              <button className="main__box" type="button" onClick={() => this.callApi(10)}>10</button>
             </section>
           </form>
           <div>
