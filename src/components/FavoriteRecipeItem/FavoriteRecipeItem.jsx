@@ -40,17 +40,17 @@ export default class FavoriteRecipeItem extends Component {
 
 
     // delete recipes from page
-    // deleteRecipe = () => {
-    //     const recipeId = this.state.selectedFaveRecipe.id;
-    //     console.log(this.state.selectedFaveRecipe.id);
-    //     // Delete fave recipe to server
-    //     axios
-    //         .delete(`${process.env.REACT_APP_API_URL}/recipes/delete/${recipeId}`)
-    //         .then((res) => {
-    //             console.log(res.data);
-    //         })
-    //         .catch((err) => console.log(err));
-    // }
+    deleteRecipe = () => {
+        const recipeId = this.state.selectedFaveRecipe.id;
+        console.log(this.state.selectedFaveRecipe.id);
+        // Delete fave recipe to server
+        axios
+            .delete(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}/delete`)
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => console.log(err));
+    }
 
 
     render() {

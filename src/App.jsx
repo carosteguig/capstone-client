@@ -50,7 +50,7 @@ export default function App() {
             render={(routerProps) =>
               <FavoriteRecipeItem {...routerProps} />
             } />             
-          <NotFound />
+          <Route path='*' element= {NotFound} />
         </Switch>
         {/* <Footer /> */}
       </Router>

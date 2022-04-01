@@ -2,6 +2,7 @@ import './RecipePage.scss';
 import { Component } from "react";
 import axios from 'axios';
 import parse from "html-react-parser";
+import { Redirect } from 'react-router-dom';
 
 // API key
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
@@ -11,6 +12,7 @@ export default class RecipePage extends Component {
     // Setting state for single recipe
     state = {
         selectedRecipe: {},
+        redirect: false,
     }
 
     componentDidMount() {
@@ -53,7 +55,8 @@ export default class RecipePage extends Component {
             })
             .then((res) => {
                 console.log(res)
-                console.log('your recipe has been posted')
+                console.log('"your recipe has been added to Faves"')
+                this.setState({redirect: true})
             })
             .catch((err) => console.log(err));
     }
@@ -63,6 +66,9 @@ export default class RecipePage extends Component {
 
     render() {
         // console.log(this.state.selectedRecipe.id);
+        if (this.state.redirect) {
+           return <Redirect to="/faves" />
+        }
         return (
             <>
                 <header>
