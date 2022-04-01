@@ -6,7 +6,7 @@ import RecipeCards from '../../components/RecipeCards/RecipeCards';
 // import parse from "html-react-parser";
 
 // API key
-const apiKey = "75770683cc6b418c8d40e409a13a5de2";
+// const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 
 export default class FavoritesPage extends Component {
 
@@ -19,7 +19,8 @@ export default class FavoritesPage extends Component {
         this.getFavoriteRecipes();
     }
 
-    getFavoriteRecipes() {
+    getFavoriteRecipes = (id) => {
+        console.log("getSingleFaveRecipe", id);
         axios.get(`${process.env.REACT_APP_API_URL}/recipes`)
         .then((res) => { 
             console.log(res);
@@ -32,8 +33,6 @@ export default class FavoritesPage extends Component {
         })
     }
 
-
-
     render() {
 
         return(
@@ -42,7 +41,7 @@ export default class FavoritesPage extends Component {
             <div>
               {this.state.favoriteRecipes && this.state.favoriteRecipes
               .map(dataRecipeCard => (
-                  <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+                  <Link to={`/faves/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                     <RecipeCards recipe={dataRecipeCard} />
                   </Link>
                 ))}

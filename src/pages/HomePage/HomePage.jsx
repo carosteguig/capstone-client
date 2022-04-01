@@ -116,6 +116,9 @@ export default class HomePage extends Component {
               <button className="main__box" type="button" onClick={() => this.callApi(5)}>5</button>
               <button className="main__box" type="button" onClick={() => this.callApi(6)}>6</button>
               <button className="main__box" type="button" onClick={() => this.callApi(7)}>7</button>
+              <button className="main__box" type="button" onClick={() => this.callApi(8)}>8</button>
+              <button className="main__box" type="button" onClick={() => this.callApi(9)}>9</button>
+              <button className="main__box" type="button" onClick={() => this.callApi(10)}>10</button>
             </section>
           </form>
           <div>

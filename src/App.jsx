@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import HomePage from './pages/HomePage/HomePage';
@@ -7,7 +7,7 @@ import NotFound from './pages/NotFound/NotFound';
 import AboutPage from './pages/AboutPage/AboutPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
-// import axios from 'axios';
+import FavoriteRecipeItem from './components/FavoriteRecipeItem/FavoriteRecipeItem';
 // import Footer from './components/Footer/Footer';
 
 
@@ -41,9 +41,14 @@ export default function App() {
               <AboutPage {...routerProps} />
             } />
           <Route
-            path='/faves'
+            path='/faves' exact
             render={(routerProps) =>
               <FavoritesPage {...routerProps} />
+            } />   
+            <Route
+            path='/faves/:id'
+            render={(routerProps) =>
+              <FavoriteRecipeItem {...routerProps} />
             } />             
           <NotFound />
         </Switch>
