@@ -21,9 +21,18 @@ export default class HomePage extends Component {
 
  
   // Calling the API using dinamic even.target.value data on the API url.
-  // Had to turn this function into a arrow function in order to work
+  // Had to turn this function into a arrow function in order to work.
   callApi = (num) => {
+    // Taking the values from the ingredient inputs and number of recipes selected to be saved in session storage.
+    sessionStorage.setItem('number', num)
+    sessionStorage.setItem('ing1', this.state.ingredient1)
+    sessionStorage.setItem('ing2', this.state.ingredient2)
+    sessionStorage.setItem('ing3', this.state.ingredient3)
+    sessionStorage.setItem('ing4', this.state.ingredient4)
+    sessionStorage.setItem('ing5', this.state.ingredient5)
+
     console.log(this.state.ingredient1)
+    this.setState({number: num})
     axios
       .get(
         `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${this.state.ingredient1},+${this.state.ingredient2},
@@ -41,12 +50,35 @@ export default class HomePage extends Component {
       
   }
 
-  // Collecting form data
+  // Collecting form data.
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
+
+  // Using DidMount to set session storage.
+  componentDidMount() {
+    const savedNum = sessionStorage.getItem('number');
+    const savedIng1 = sessionStorage.getItem('ing1');
+    const savedIng2 = sessionStorage.getItem('ing2');
+    const savedIng3 = sessionStorage.getItem('ing3');
+    const savedIng4 = sessionStorage.getItem('ing4');
+    const savedIng5 = sessionStorage.getItem('ing5');
+    // I number is not null, do this.
+    if (savedNum !== null) {
+    this.setState({
+      ingredient1: savedIng1,
+      ingredient2: savedIng2,
+      ingredient3: savedIng3,
+      ingredient4: savedIng4,
+      ingredient5: savedIng5,
+    },
+    () => {
+      this.callApi(savedNum)
+    }
+    )}
+  }
 
   render() {
 
