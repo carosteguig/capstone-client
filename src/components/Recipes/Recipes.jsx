@@ -1,13 +1,13 @@
-import './RecipePage.scss';
-import { Component } from "react";
+import './Recipes.scss';
+import { Component } from 'react';
 import axios from 'axios';
-import parse from "html-react-parser";
+import parse from 'html-react-parser';
 import { Redirect } from 'react-router-dom';
 
 // API key
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 
-export default class RecipePage extends Component {
+export default class Recipes extends Component {
 
     // Setting state for single recipe
     state = {
@@ -15,17 +15,11 @@ export default class RecipePage extends Component {
         redirect: false,
     }
 
-    componentDidMount() {
-        // Using dinamic id collected using props.match from the gerRecipesByIngredients API call function
-        this.getSingleRecipe(this.props.match.params.id);
-    }
-
-    // Getting single recipe
     getSingleRecipe = (id) => {
         console.log("getSingleRecipe", id);
         axios
             .get(
-                `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
+                `https://api.spoonacular.com/recipes/660126/information?apiKey=${apiKey}`
             )
             .then((res) => {
                 console.log(res);
@@ -37,7 +31,6 @@ export default class RecipePage extends Component {
                 console.log(err);
             });
     }
-
 
     // post recipes and seving them to faves page
     postRecipe = () => {
@@ -55,19 +48,20 @@ export default class RecipePage extends Component {
             .then((res) => {
                 console.log(res)
                 console.log('"your recipe has been added to Faves"')
-                this.setState({redirect: true})
+                this.setState({ redirect: true })
             })
             .catch((err) => console.log(err));
     }
 
 
 
-
     render() {
         // console.log(this.state.selectedRecipe.id);
         if (this.state.redirect) {
-           return <Redirect to="/faves" />
+            return <Redirect to="/faves" />
         }
+
+
         return (
             <>
                 <header>
@@ -98,8 +92,9 @@ export default class RecipePage extends Component {
 
 
                 </main>
+
             </>
+
         );
     }
-}
-
+} 

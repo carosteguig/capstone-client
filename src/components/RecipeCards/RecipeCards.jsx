@@ -15,7 +15,6 @@ export default function RecipeCards(props) {
             <h3>{props.recipe.title}</h3>
           </div>
         </li>
-        {/* ))} */}
       </ul>
     </div>
 

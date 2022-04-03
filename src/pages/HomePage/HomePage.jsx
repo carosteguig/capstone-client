@@ -3,6 +3,8 @@ import { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
+// import Recipes from "../../components/Recipes/Recipes";
+
 
 // API key
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
@@ -19,7 +21,7 @@ export default class HomePage extends Component {
     ingredient5: '',
   };
 
- 
+
   // Calling the API using dinamic even.target.value data on the API url.
   // Had to turn this function into a arrow function in order to work.
   callApi = (num) => {
@@ -32,7 +34,7 @@ export default class HomePage extends Component {
     sessionStorage.setItem('ing5', this.state.ingredient5)
 
     console.log(this.state.ingredient1)
-    this.setState({number: num})
+    this.setState({ number: num })
     axios
       .get(
         `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${this.state.ingredient1},+${this.state.ingredient2},
@@ -47,7 +49,7 @@ export default class HomePage extends Component {
       .catch((err) => {
         console.log(err);
       });
-      
+
   }
 
   // Collecting form data.
@@ -67,17 +69,18 @@ export default class HomePage extends Component {
     const savedIng5 = sessionStorage.getItem('ing5');
     // I number is not null, do this.
     if (savedNum !== null) {
-    this.setState({
-      ingredient1: savedIng1,
-      ingredient2: savedIng2,
-      ingredient3: savedIng3,
-      ingredient4: savedIng4,
-      ingredient5: savedIng5,
-    },
-    () => {
-      this.callApi(savedNum)
+      this.setState({
+        ingredient1: savedIng1,
+        ingredient2: savedIng2,
+        ingredient3: savedIng3,
+        ingredient4: savedIng4,
+        ingredient5: savedIng5,
+      },
+        () => {
+          this.callApi(savedNum)
+        }
+      )
     }
-    )}
   }
 
   render() {
@@ -85,13 +88,13 @@ export default class HomePage extends Component {
     return (
       <div>
         <header className="header">
-          <div className="header__left-box">
-            <h1 className="header__title">Simplify your life by quickly selecting recipes</h1>
-            <Link to="">
-              <p className="header__btn">Learn More</p>
+          <div className="header__content">
+            <h1 className="header__content-title">A simple meal plan</h1>
+            <p className="header__content-text">Save time planning your meals and reduce food waste</p>
+            <Link className="header__content-link" to="/about">
+              <p className="header__content-btn">Learn More</p>
             </Link>
           </div>
-          <img src="" alt="food on a plate" />
         </header>
         <main className="main">
           <form>
@@ -157,11 +160,22 @@ export default class HomePage extends Component {
             <div>
               {this.state.recipesByIngredients && this.state.recipesByIngredients
                 .map(dataRecipeCard => (
-                  <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}> {/** I tried adding {this.props.match.params.id} to the route but didn't work*/}
+                  <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                     <RecipeCards recipe={dataRecipeCard} />
                   </Link>
                 ))}
             </div>
+            {/* <div>
+              {this.state.recipesByIngredients && this.state.recipesByIngredients
+                .map(dataRecipeCard => (
+                  <Link to={`/recipipi/${dataRecipeCard.id}`} key={dataRecipeCard.id}> 
+                    <RecipeCards recipe={dataRecipeCard} />
+                  </Link>
+                ))}
+            </div>
+            <div>
+              <Recipes />
+            </div> */}
           </div>
 
         </main>

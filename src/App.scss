@@ -1,2 +1,5 @@
 @use '../src/styles/partials/globals' as *;
 
+* {
+    border: solid black 1px;
+}

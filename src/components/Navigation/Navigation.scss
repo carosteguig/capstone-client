@@ -1,0 +1,30 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/resets' as *;
+
+.nav {
+    @include display-flex(column, none, center);
+
+    &__logo {
+        background-color: none;
+        padding: 1rem 0 .75rem;
+        
+    }
+
+    &__list {
+        @include labels-buttons__mobile;
+        @include display-flex(row, center, none);
+        color: $primary__color--bkgd-cta-text;
+        width: 100%;
+
+        &-link {
+            width: 50%;
+        }
+
+        &-text { 
+            text-align: center;
+
+        }
+        
+    }
+}

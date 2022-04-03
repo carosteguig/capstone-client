@@ -1,5 +1,6 @@
 import './App.scss';
-// import React, { Component } from 'react';
+import './styles/partials/_globals.scss';
+import './styles/partials/_resets.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import HomePage from './pages/HomePage/HomePage';
@@ -8,6 +9,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import FavoriteRecipeItem from './components/FavoriteRecipeItem/FavoriteRecipeItem';
+// import Recipes from './components/Recipes/Recipes';
 // import Footer from './components/Footer/Footer';
 
 
@@ -35,7 +37,17 @@ export default function App() {
             render={(routerProps) =>
               <RecipePage {...routerProps} />
             } />
+          {/* <Route
+            path='/recipipi' exact
+            render={(routerProps) =>
+              <Recipes {...routerProps} />
+            } />
           <Route
+            path='/recipipi/:id'
+            render={(routerProps) =>
+              <Recipes {...routerProps} />
+            } />   */}
+           <Route
             path='/about' exact
             render={(routerProps) =>
               <AboutPage {...routerProps} />
@@ -44,7 +56,7 @@ export default function App() {
             path='/faves' exact
             render={(routerProps) =>
               <FavoritesPage {...routerProps} />
-            } />   
+            } /> 
             <Route
             path='/faves/:id'
             render={(routerProps) =>
