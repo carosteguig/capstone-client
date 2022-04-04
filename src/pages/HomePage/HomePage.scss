@@ -10,18 +10,44 @@
     margin-top:-7.5rem;
     @include display-flex(column, flex-end, center);
 
+    @include tablet {
+        @include display-flex(column, flex-end, flex-start);
+
+        @include desktop {
+            @include display-flex(column, flex-end, flex-start);
+        }
+
+    }
+
     &__content {
         color: $primary__color--bkgd-cta-text;
         margin: 0rem 1rem 2.5rem 1rem;
 
+        @include tablet {
+            margin: 0rem 1.75rem 2.5rem 1.75rem;
+
+            @include desktop {
+                max-width: 80rem;
+                margin: 0 auto;
+            }
+        }
+    
+
         &-title {
             @include page-header__mobile;
             margin-bottom: 1rem;
+
+            @include tablet {
+                @include page-header__tablet-desktop;
+            }
         }
 
         &-text {
             @include body__mobile;
             margin-bottom: 1.5rem;
+            @include tablet {
+                @include body__tablet-desktop;
+            }
         }
 
         &-btn {
@@ -43,6 +69,10 @@
 
     &__content {
         padding: 2.5rem 1rem 2rem 1rem;
+
+        @include tablet {
+            padding: 3.5rem 1.75rem 3rem 1.75rem;
+        }
         
         &-title {
             @include section-header__mobile;
@@ -58,15 +88,31 @@
         background-color: $secondary__color--bkgd;
         @include display-flex(column, none, center);
 
+        @include tablet {
+            @include display-flex(row, center, flex-start);
+            gap: 1%;
+        }
+
         &-section {
             padding: 2.5rem 1rem 0rem 1rem;
             max-width: 26.875rem;
+
+            @include tablet {
+                padding: 4rem 1.75rem 3rem 1.75rem;
+                max-width: 60.625rem;
+                @include display-flex(column, none, center);
+            }
         }
 
         &-title {
             @include body__mobile;
             font-weight: 500;
             margin-bottom: 1rem;
+
+            @include tablet {
+                @include body__tablet-desktop;
+                font-weight: 500;
+            }
         }
 
         &-input {
@@ -101,9 +147,15 @@
             // text-align: center;
             margin-bottom: 3rem;
 
+            @include tablet {
+                width: 100%;
+                margin-top: 2.5rem;
+
+            }
+
             &-sub {
                 @include display-flex(row, space-between, none);
-                max-width: 26.875rem;
+                // max-width: 26.875rem;
 
                 &-top {
                     margin-bottom: 1rem;
@@ -125,6 +177,8 @@
                 background-color: $primary__color--cta-active;
                 border: none;
                 box-shadow: 0.25px 0.25px 2px $primary__color--text;
+
+
                 
                 &:hover {
                     background-color: $secondary__color--cta-hover;
@@ -144,11 +198,13 @@
 
     &__card {
         padding: 2rem 1rem;
-        @include display-flex(column, none, center);
+        @include display-flex(row, center, center);
         flex-wrap: wrap;
+        gap: 4%;
 
         @include tablet {
             flex-wrap: wrap;
+            gap: 8%;
         }
     }
 
