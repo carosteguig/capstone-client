@@ -3,16 +3,16 @@
 // mobile
 @mixin page-header__mobile {
     font-family: "Fira Sans";
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2.625rem;
+    font-weight: 500;
     line-height: 3rem;
 }
 
 @mixin section-header__mobile {
     font-family: "Fira Sans";
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    line-height: 1.25rem;  
+    line-height: 2.25rem;  
 }
 
 @mixin subheader__mobile {
@@ -24,7 +24,7 @@
 
 @mixin body__mobile {
     font-family: "Fira Sans";
-    font-size: .8125rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.125rem;  
 }
@@ -32,7 +32,7 @@
 @mixin labels-buttons__mobile {
     font-family: "Fira Sans";
     // font-size: .75rem;
-    font-size: 1rem;
+    font-size: 0.785rem;
     font-weight: 400;
     line-height: 1.25rem; 
 }

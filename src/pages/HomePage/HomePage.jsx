@@ -97,10 +97,16 @@ export default class HomePage extends Component {
           </div>
         </header>
         <main className="main">
-          <form>
-            <section className="main__box main__box--left">
+          <div className="main__content">
+            <h2 className="main__content-title">
+              Start planning your meals!
+            </h2>
+            <p className="main__content-text">This is very simple, all you need to do is choose the ingredients you want in your recipe and then choose how many recipes you want with those ingredients</p>
+          </div>
+          <form className="main__box">
+            <section className="main__box-section main__box-section--left">
               <p className="main__box-title">
-                Add the ingredients you want in your recipe/s
+                Add the ingredients you would like to use in your recipes
               </p>
               <input
                 className="main__box-input"
@@ -140,20 +146,20 @@ export default class HomePage extends Component {
               />
             </section>
 
-            <section className="main__box main__box--left">
+            <section className="main__box-section main__box-section--left">
               <p className="main__box-title">
-                Select the number of recipe/s you want to display
+                Select the number of recipes you would like to display
               </p>
-              <button className="main__box" type="button" onClick={() => this.callApi(1)}>1</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(2)}>2</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(3)}>3</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(4)}>4</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(5)}>5</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(6)}>6</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(7)}>7</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(8)}>8</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(9)}>9</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(10)}>10</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(1)}>1</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(2)}>2</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(3)}>3</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(4)}>4</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(5)}>5</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(6)}>6</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(7)}>7</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(8)}>8</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(9)}>9</button>
+              <button className="main__box-nums" type="button" onClick={() => this.callApi(10)}>10</button>
             </section>
           </form>
           <div>
