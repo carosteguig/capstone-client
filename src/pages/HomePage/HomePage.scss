@@ -7,8 +7,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    margin-top:-6.5rem;
-    @include display-flex(column, flex-end, flex-start);
+    margin-top:-7.5rem;
+    @include display-flex(column, flex-end, center);
 
     &__content {
         color: $primary__color--bkgd-cta-text;
@@ -55,11 +55,12 @@
     }
 
     &__box {
-        
         background-color: $secondary__color--bkgd;
+        @include display-flex(column, none, center);
 
         &-section {
-            padding: 2.5rem 1rem 0 1rem;
+            padding: 2.5rem 1rem 0rem 1rem;
+            max-width: 26.875rem;
         }
 
         &-title {
@@ -96,8 +97,59 @@
             @include labels-buttons__mobile;
         }
 
+        &-container {
+            // text-align: center;
+            margin-bottom: 3rem;
+
+            &-sub {
+                @include display-flex(row, space-between, none);
+                max-width: 26.875rem;
+
+                &-top {
+                    margin-bottom: 1rem;
+                }
+            }
+            
+
+
+            &-nums {
+                height: 3rem;
+                width: 3rem;
+                border-radius: 100%;
+                // margin: 1rem 0.5rem 1rem 0.5rem;
+                font-family: "Fira Sans";
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: $primary__color--bkgd-cta-text;
+                cursor: pointer;
+                background-color: $primary__color--cta-active;
+                border: none;
+                box-shadow: 0.25px 0.25px 2px $primary__color--text;
+                
+                &:hover {
+                    background-color: $secondary__color--cta-hover;
+                    box-shadow: 1px 1px 2px $primary__color--text;
+                }
+
+                &:active {
+                    background-color: $secondary__color--cta-hover;
+                    // box-shadow: 1.5px 1.5px 2px $primary__color--text;
+                }
+
+            }
+        }
         
 
+    }
+
+    &__card {
+        padding: 2rem 1rem;
+        @include display-flex(column, none, center);
+        flex-wrap: wrap;
+
+        @include tablet {
+            flex-wrap: wrap;
+        }
     }
 
 

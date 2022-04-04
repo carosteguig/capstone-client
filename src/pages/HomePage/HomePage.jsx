@@ -150,38 +150,31 @@ export default class HomePage extends Component {
               <p className="main__box-title">
                 Select the number of recipes you would like to display
               </p>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(1)}>1</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(2)}>2</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(3)}>3</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(4)}>4</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(5)}>5</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(6)}>6</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(7)}>7</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(8)}>8</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(9)}>9</button>
-              <button className="main__box-nums" type="button" onClick={() => this.callApi(10)}>10</button>
+              <div className="main__box-container">
+                <div className="main__box-container-sub main__box-container-sub-top">
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(1)}>1</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(2)}>2</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(3)}>3</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(4)}>4</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(5)}>5</button>
+                </div>
+                 <div className="main__box-container-sub main__box-container-sub-bottom">
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(6)}>6</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(7)}>7</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(8)}>8</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(9)}>9</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(10)}>10</button>
+                </div>
+              </div>
             </section>
           </form>
-          <div>
-            <div>
+          <div className="main__card">
               {this.state.recipesByIngredients && this.state.recipesByIngredients
                 .map(dataRecipeCard => (
                   <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                     <RecipeCards recipe={dataRecipeCard} />
                   </Link>
                 ))}
-            </div>
-            {/* <div>
-              {this.state.recipesByIngredients && this.state.recipesByIngredients
-                .map(dataRecipeCard => (
-                  <Link to={`/recipipi/${dataRecipeCard.id}`} key={dataRecipeCard.id}> 
-                    <RecipeCards recipe={dataRecipeCard} />
-                  </Link>
-                ))}
-            </div>
-            <div>
-              <Recipes />
-            </div> */}
           </div>
 
         </main>

@@ -4,25 +4,51 @@
 
 .nav {
     @include display-flex(column, none, center);
+    padding: 1rem 0 1rem 0;
+
+    @include tablet {
+        @include display-flex(row, space-between, center);
+        padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+    }
 
     &__logo {
-        background-color: none;
-        padding: 1rem 0 .75rem;
-        
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            padding-bottom: 0;
+            padding-left: .5rem;
+
+
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }  
     }
 
     &__list {
         @include body__mobile;
         @include display-flex(row, center, none);
         color: $primary__color--bkgd-cta-text;
-        width: 100%;
+        width: 50%;
+
+        @include tablet {
+            @include display-flex(row, flex-start, none);
+            width: 20%;
+
+        }
 
         &-link {
             width: 50%;
+
         }
 
         &-text { 
             text-align: center;
+
+            &:hover {
+                opacity: 0.5;
+            }
         }
         
     }

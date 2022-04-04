@@ -1,0 +1,8 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.fave__nav {
+    margin-top:-7.5rem;
+    background-color: $primary__color--cta-active;
+    height: 7.25rem;
+}

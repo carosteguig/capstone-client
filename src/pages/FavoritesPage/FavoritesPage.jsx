@@ -37,8 +37,10 @@ export default class FavoritesPage extends Component {
 
         return(
             <>
-            <div>
-            <div>
+            <div className='fave__nav'>
+
+            </div>
+            <div className='fave'>
               {this.state.favoriteRecipes && this.state.favoriteRecipes
               .map(dataRecipeCard => (
                   <Link to={`/faves/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
@@ -46,7 +48,7 @@ export default class FavoritesPage extends Component {
                   </Link>
                 ))}
             </div>
-            </div>
+            
 
             </>
         );
