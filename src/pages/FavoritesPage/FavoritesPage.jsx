@@ -38,7 +38,6 @@ export default class FavoritesPage extends Component {
         return(
             <>
             <div className='fave__nav'>
-
             </div>
             <div className='fave'>
               {this.state.favoriteRecipes && this.state.favoriteRecipes

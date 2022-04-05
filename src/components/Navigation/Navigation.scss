@@ -9,6 +9,11 @@
     @include tablet {
         @include display-flex(row, space-between, center);
         padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+
+        @include desktop {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
     }
 
     &__logo {
@@ -17,6 +22,7 @@
         @include tablet {
             padding-bottom: 0;
             padding-left: .5rem;
+            
 
 
         }
@@ -28,9 +34,9 @@
 
     &__list {
         @include body__mobile;
-        @include display-flex(row, center, none);
+        @include display-flex(row, center, space-between);
         color: $primary__color--bkgd-cta-text;
-        width: 50%;
+        width: 100%;
 
         @include tablet {
             @include display-flex(row, flex-start, none);

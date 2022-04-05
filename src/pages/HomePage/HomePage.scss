@@ -1,9 +1,10 @@
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
+@import '../../styles/partials/resets';
 
 .header {
-    background-image: url('../../assets/images/images/header-mobile-image2.jpg');
-    background-position: 45% 0;
+    background-image: url('../../assets/images/images/header-mobile-image2.2.jpg');
+    background-position: 47% 0;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -12,9 +13,10 @@
 
     @include tablet {
         @include display-flex(column, flex-end, flex-start);
+        // background-image: url('../../assets/images/images/tablet-desktop-image.jpg');
 
         @include desktop {
-            @include display-flex(column, flex-end, flex-start);
+            // @include display-flex(column, flex-end, flex-start);
         }
 
     }
@@ -28,7 +30,7 @@
 
             @include desktop {
                 max-width: 80rem;
-                margin: 0 auto;
+                margin: 0rem 10% 2.5rem 10%;
             }
         }
     
@@ -66,12 +68,16 @@
 
 .main {
     color: $primary__color--text;
+    @include display-flex(column, none, center);
 
     &__content {
+        // @include display-flex(column, none, center);
         padding: 2.5rem 1rem 2rem 1rem;
+        max-width: 26.875rem;
 
         @include tablet {
             padding: 3.5rem 1.75rem 3rem 1.75rem;
+            max-width: 60.625rem;
         }
         
         &-title {
@@ -91,6 +97,10 @@
         @include tablet {
             @include display-flex(row, center, flex-start);
             gap: 1%;
+
+            @include desktop {
+                gap: 3%;
+            }
         }
 
         &-section {
@@ -101,6 +111,11 @@
                 padding: 4rem 1.75rem 3rem 1.75rem;
                 max-width: 60.625rem;
                 @include display-flex(column, none, center);
+
+                @include desktop {
+                    padding: 4rem 1.75rem 3rem 1.75rem;
+                    max-width: 80rem;
+                }
             }
         }
 
@@ -112,6 +127,7 @@
             @include tablet {
                 @include body__tablet-desktop;
                 font-weight: 500;
+                margin-bottom: 1.5rem;
             }
         }
 
@@ -124,6 +140,11 @@
             outline: none;
             padding-left:0.75rem;
             background-color: none;
+
+            @include tablet {
+                margin-bottom: 1.25rem;
+                height: 2rem;
+            }
             
     
             &:active {
@@ -149,7 +170,7 @@
 
             @include tablet {
                 width: 100%;
-                margin-top: 2.5rem;
+                margin-top: 4rem;
 
             }
 
@@ -159,6 +180,10 @@
 
                 &-top {
                     margin-bottom: 1rem;
+
+                    @include tablet {
+                        margin-bottom: 2rem;
+                    }
                 }
             }
             
@@ -203,8 +228,12 @@
         gap: 4%;
 
         @include tablet {
+            // @include display-flex(row, center, center);
             flex-wrap: wrap;
-            gap: 8%;
+            gap: 6%;
+            padding: 4rem 1.75rem;
+            max-width: 63.625rem;
+            margin: 0 auto;
         }
     }
 
