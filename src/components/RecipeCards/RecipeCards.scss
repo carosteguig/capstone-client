@@ -34,10 +34,14 @@
         
     }
 
-    // &__image {
-    //     // filter:contrast(120%);
-    //     // width: 0 auto;   
-    // }
+    &__image {
+        // display: block;
+        // margin-left: auto;
+        // margin-right: auto;
+        // width: 100%; 
+        object-position: -30px -45px;
+        width: 120%
+    }
 
     &__overlay {
         position: absolute;

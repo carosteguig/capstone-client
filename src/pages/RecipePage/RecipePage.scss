@@ -22,11 +22,6 @@
       padding: 3rem 2rem 1rem 2rem;
       max-width:60rem;
       margin: 0 auto;
-
-    //   @include desktop {
-    //     // max-width: 80rem;
-    //     // margin: 0 auto;
-    //   }
      }
   }
 
@@ -45,15 +40,15 @@
   &__container {
       
     @include tablet {
-      @include display-flex(row, flex-start, center);
-      padding: 1rem 2rem;
+      @include display-flex(row, space-between, center);
+      // padding: 1rem 1rem;
       width: 100%;
-      gap: 10%;
+      gap: 15%;
 
       @include desktop {
         @include display-flex(row, space-between, center);
         border-top: solid 1px $primary__color--cta-active;
-        padding-top: 3rem;
+        padding: 3rem 0 1rem 0;
       }
     }
   }
@@ -68,11 +63,13 @@
 
     @include tablet {
       @include display-flex(column, center, center);
-      gap: 2rem;
+      margin-left: 3rem;
+      gap: 1rem;
 
       @include desktop {
         @include display-flex(row, space-between, flex-end);
         gap: 4rem;
+        margin-left: 5rem;
       }
       //   margin-right: 10%;
       //   width: 15rem;
@@ -148,7 +145,11 @@
         gap: 2rem;
         max-width: 60rem;
         margin: 0 auto;
-        // width: 100%;
+        
+        @include desktop {
+          gap: 4rem;
+
+        }
     }
   }
 
@@ -194,7 +195,7 @@
     }
 
     &--steps {
-        margin: 2rem 2rem;
+        margin: 2rem 3rem;
     }
   }
 
@@ -227,6 +228,13 @@
 
     @include tablet {
         margin: 2rem 2rem;
+        max-width: 60rem;
+        margin: 0 auto;
+
+        @include desktop {
+          max-width: 65rem;
+          margin: 0 auto;
+        }
 
     }
   }
