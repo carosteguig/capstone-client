@@ -1,8 +1,63 @@
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
 
-.fave__nav {
-    margin-top:-7.5rem;
-    background-color: $primary__color--cta-active;
-    height: 7.25rem;
+.fave {
+
+    &__nav {
+        margin-top:-7.5rem;
+        background-color: $primary__color--cta-active;
+        height: 7.25rem;
+    }
+
+    &__container {
+        padding: 2rem 1rem;
+
+        @include tablet {
+            padding: 3rem 2rem;
+            max-width: 63.625rem;
+            margin: 0 auto;
+
+            @include desktop {
+                padding: 3rem 2rem;
+                max-width: 80rem;
+                margin: 0 auto;
+            }
+        }
+        
+    }
+
+    &__title {
+        @include section-header__mobile;
+        color: $primary__color--text;
+        margin-bottom: 2rem;
+
+        @include  tablet {
+            @include section-header__tablet-desktop;
+        }
+    }
+
+    &__cards {
+        @include display-flex(row, center, center);
+        flex-wrap: wrap;
+        gap: 4%;
+    }
+
+    @include tablet {
+        // @include display-flex(row, center, center);
+        flex-wrap: wrap;
+        gap: 6%;
+        padding: 4rem 1.75rem;
+        max-width: 63.625rem;
+        margin: 0 auto;
+
+        @include desktop {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+    }
+
 }
+
+
+
+
