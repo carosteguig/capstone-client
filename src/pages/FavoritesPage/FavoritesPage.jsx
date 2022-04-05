@@ -13,7 +13,7 @@ export default class FavoritesPage extends Component {
     //Setting state for favourites
     state = {
         favoriteRecipes: [],
-    } 
+    }
 
     componentDidMount() {
         this.getFavoriteRecipes();
@@ -22,32 +22,34 @@ export default class FavoritesPage extends Component {
     getFavoriteRecipes = (id) => {
         console.log("getSingleFaveRecipe", id);
         axios.get(`${process.env.REACT_APP_API_URL}/recipes`)
-        .then((res) => { 
-            console.log(res);
-            this.setState({
-                favoriteRecipes: res.data,
+            .then((res) => {
+                console.log(res);
+                this.setState({
+                    favoriteRecipes: res.data,
+                })
             })
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     render() {
 
-        return(
+        return (
             <>
-            <div>
-            <div>
-              {this.state.favoriteRecipes && this.state.favoriteRecipes
-              .map(dataRecipeCard => (
-                  <Link to={`/faves/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
-                    <RecipeCards recipe={dataRecipeCard} />
-                  </Link>
-                ))}
-            </div>
-            </div>
-
+                <div className='fave__nav'>
+                </div>
+                <div className='fave__container'>
+                    <h1 className='fave__title'>Favorites</h1>
+                    <div className="fave__cards">
+                        {this.state.favoriteRecipes && this.state.favoriteRecipes
+                            .map(dataRecipeCard => (
+                                <Link to={`/faves/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+                                    <RecipeCards className="fave__card-item" recipe={dataRecipeCard} />
+                                </Link>
+                            ))}
+                    </div>
+                </div>
             </>
         );
     }

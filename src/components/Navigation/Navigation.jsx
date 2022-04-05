@@ -17,7 +17,6 @@ export default function Navigation() {
                 <NavLink className='nav__list-link' to='/'>
                     <p className='nav__list-text'>About</p>
                 </NavLink>
-
             </div>
         </nav>
 

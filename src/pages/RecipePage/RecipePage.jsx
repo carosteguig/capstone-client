@@ -3,6 +3,8 @@ import { Component } from "react";
 import axios from 'axios';
 import parse from "html-react-parser";
 import { Redirect } from 'react-router-dom';
+import Servings from '../../assets/images/icons/servings2.png';
+import Time from '../../assets/images/icons/clock-recipes.png';
 
 // API key
 const apiKey = "75770683cc6b418c8d40e409a13a5de2";
@@ -55,7 +57,7 @@ export default class RecipePage extends Component {
             .then((res) => {
                 console.log(res)
                 console.log('"your recipe has been added to Faves"')
-                this.setState({redirect: true})
+                this.setState({ redirect: true })
             })
             .catch((err) => console.log(err));
     }
@@ -66,37 +68,58 @@ export default class RecipePage extends Component {
     render() {
         // console.log(this.state.selectedRecipe.id);
         if (this.state.redirect) {
-           return <Redirect to="/faves" />
+            return <Redirect to="/faves" />
         }
         return (
             <>
-                <header>
-                    <img src={this.state.selectedRecipe.image} alt={this.state.selectedRecipe.title} />
+                <div className='recipe__nav'>
+                </div>
+                <header className='recipe__header'>
+                    <div className='recipe__title'>
+                        <h1 className='recipe__title-text'>{this.state.selectedRecipe.title}</h1>
+                    </div>
+                    <div className='recipe__container'>
+                        <div className='recipe__info'>
+                            <div className='recipe__info-box'>
+                                <img className='recipe__info-icon' src={Servings} alt='meal plate' />
+                                <h4 className='recipe__info-text'>{this.state.selectedRecipe.servings} Servings</h4>
+                            </div>
+                            <div className='recipe__info-box'>
+                                <img className='recipe__info-icon' src={Time} alt='clock' />
+                                <h4 className='recipe__info-text'>Ready in {this.state.selectedRecipe.readyInMinutes} min.</h4>
+                            </div>
+                        </div>
+                        <div className='recipe__img-section'>
+                            <div className="recipe__img-overlay"></div>
+                            <img className='recipe__img-photo' src={this.state.selectedRecipe.image} alt={this.state.selectedRecipe.title} />
+                        </div>
+                    </div>
                 </header>
-                <main>
-                    <h1>{this.state.selectedRecipe.title}</h1>
-                    <h4>Servings: {this.state.selectedRecipe.servings}</h4>
-                    <h4>Prep time: {this.state.selectedRecipe.readyInMinutes} minutes</h4>
-                    {parse(`${this.state.selectedRecipe.summary}`)}
-                    <h3>Ingredients</h3>
-                    {/* Collecting steps instruction from objects inside and array */}
-                    <ul>
-                        {this.state.selectedRecipe.extendedIngredients &&
-                            this.state.selectedRecipe.extendedIngredients.map(
-                                (ingredient) => <li key={ingredient.id}>{ingredient.original}</li>)}
+                <main className='main__container'>
+                    <div className='main__container-section'>
+                        <p className='main__container-text'>{parse(`${this.state.selectedRecipe.summary}`)}</p>
+                        <div className='main__container-list--ing'>
+                            <h3 className='main__container-title'>Ingredients</h3>
+                            {/* Collecting ingreadients from objects inside and array */}
+                            <ul className='main__container-items'>
+                                {this.state.selectedRecipe.extendedIngredients &&
+                                    this.state.selectedRecipe.extendedIngredients.map(
+                                        (ingredient) => <li className='main__container-item' key={ingredient.id}>{ingredient.original}</li>)}
 
-                    </ul>
-                    <h3>Steps</h3>
-                    {/* Collecting steps instruction from objects inside and array */}
-                    <ol>
-                        {this.state.selectedRecipe.analyzedInstructions &&
-                            this.state.selectedRecipe.analyzedInstructions[0].steps.map(
-                                (step) => <li key={step.number}>{step.step}</li>)}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className='main__container-list--stps'>
+                        <h3 className='main__container-title main__container-title--steps'>Steps</h3>
+                        {/* Collecting steps instruction from objects inside and array */}
+                        <ol className='main__container-steps'>
+                            {this.state.selectedRecipe.analyzedInstructions &&
+                                this.state.selectedRecipe.analyzedInstructions[0].steps.map(
+                                    (step) => <li className='main__container-step' key={step.number}>{step.step}</li>)}
 
-                    </ol>
-                    <button onClick={this.postRecipe}/*{() => postRecipe()}*/>+ Favourites</button>
-
-
+                        </ol>
+                    </div>
+                    <button className='main__container-btn' onClick={this.postRecipe}/*{() => postRecipe()}*/>Add Favourites</button>
                 </main>
             </>
         );

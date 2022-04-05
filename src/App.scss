@@ -1,5 +1,4 @@
 @use '../src/styles/partials/globals' as *;
-
-* {
-    border: solid black 1px;
-}
+@import "./styles/partials/globals";
+@import "./styles/partials/mixins";
+@import "./styles/partials/resets";

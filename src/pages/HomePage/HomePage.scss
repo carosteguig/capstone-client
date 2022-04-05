@@ -1,42 +1,278 @@
+@import '../../styles/partials/globals';
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
+@import '../../styles/partials/resets';
+
 
 .header {
-    background-image: url('../../assets/images/images/header-mobile-image2.jpg');
-    background-position: 45% 0;
+    background-image: url('../../assets/images/images/header-mobile-image2.2.jpg');
+    background-position: 47% 0;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    margin-top:-6.5rem;
-    @include display-flex(column, flex-end, center);
+    margin-top:-7.5rem;
+    @include display-flex(column, flex-end, flex-start);
+
+    @include tablet {
+        @include display-flex(column, flex-end, flex-start);
+
+    }
+
+    &__main {
+        max-width: 26.875rem;
+        margin: 0 auto;
+        width: 100%;
+
+        @include tablet {
+            max-width: 60.625rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        @include desktop {
+            max-width: 80rem;
+            margin: 0 auto;
+            width: 100%;
+            
+        }
+    }
 
     &__content {
         color: $primary__color--bkgd-cta-text;
         margin: 0rem 1rem 2.5rem 1rem;
+        max-width: 26.875rem;
+
+        @include tablet {
+            margin: 0rem 1.75rem 2.5rem 1.75rem;
+        }
+    
 
         &-title {
             @include page-header__mobile;
             margin-bottom: 1rem;
+
+
+            @include tablet {
+                @include page-header__tablet-desktop;
+            }
         }
 
         &-text {
-            @include subheader__mobile;
+            @include body__mobile;
             margin-bottom: 1.5rem;
+            @include tablet {
+                @include body__tablet-desktop;
+            }
         }
 
         &-btn {
+            @include labels-buttons__mobile;
             background-color: $primary__color--cta-active;
             width: 7rem;
             text-align: center;
             padding: 0.75rem 0;
-            border-radius: 0.25rem;
+            border-radius: 0.375rem;
+            letter-spacing: 0.0825rem;
+
+            @include tablet {
+                @include labels-buttons__tablet-desktop;
+            }
 
             &:hover {
                 background-color: $secondary__color--cta-hover; 
             }
         }
+    }
+}
+
+.main {
+    color: $primary__color--text;
+    @include display-flex(column, none, center);
+
+    &__content {
+        @include display-flex(column, none, center);
+        padding: 3rem 1rem 3rem 1rem;
+        gap: 3rem;
+        // max-width: 26.875rem;
+
+        @include tablet {
+            @include display-flex(row, space-between, flex-start);
+            padding: 3.5rem 1.75rem 3rem 1.75rem;
+            max-width: 60.625rem;
+
+            @include desktop {
+                max-width: 70rem;
+                padding: 4.5rem 1.75rem 4rem 1.75rem;
+            }
+        }
 
 
+
+        &-card {
+            @include display-flex(column, none, center);
+            @include body__mobile;
+            text-align: center;
+            gap:1rem;
+
+            @include tablet {
+                @include body__tablet-desktop;
+                width: 30%;
+            }
+        }
+
+        &-icon {
+            height: 6.125rem;
+        }
+    }
+
+    &__box {
+        background-color: $secondary__color--bkgd;
+        width: 100%;
+        @include display-flex(column, none, center);
+
+        @include tablet {
+            @include display-flex(row, center, flex-start);
+            gap: 1%;
+
+            @include desktop {
+                gap: 3%;
+            }
+        }
+
+        &-section {
+            padding: 2.5rem 1rem 0rem 1rem;
+            max-width: 26.875rem;
+
+            @include tablet {
+                padding: 4rem 1.75rem 3rem 1.75rem;
+                max-width: 60.625rem;
+                @include display-flex(column, none, center);
+
+                @include desktop {
+                    padding: 4rem 1.75rem 3rem 1.75rem;
+                    max-width: 80rem;
+                }
+            }
+        }
+
+        &-title {
+            @include body__mobile;
+            font-weight: 500;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                @include body__tablet-desktop;
+                font-weight: 500;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        &-input {
+            width: 95%;
+            margin-bottom: .875rem;
+            height: 1.75rem;
+            border-radius: 0.375rem;
+            border: solid 1px $primary__color--second-text;
+            outline: none;
+            padding-left:0.75rem;
+            background-color: none;
+
+            @include tablet {
+                margin-bottom: 1.25rem;
+                height: 2rem;
+            }
+            
+    
+            &:active {
+                border: 1px solid $primary__color--cta-active;
+                
+            }
+          
+            &:focus {
+                border: 1px solid $primary__color--cta-active;
+                background-color: none;
+            }
+
+        }
+
+        ::placeholder {
+            color: $primary__color--second-text;
+            @include labels-buttons__mobile;
+        }
+
+        &-container {
+            // text-align: center;
+            margin-bottom: 3rem;
+
+            @include tablet {
+                width: 100%;
+                margin-top: 4rem;
+
+            }
+
+            &-sub {
+                @include display-flex(row, space-between, none);
+                // max-width: 26.875rem;
+
+                &-top {
+                    margin-bottom: 1rem;
+
+                    @include tablet {
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+            
+
+
+            &-nums {
+                height: 3rem;
+                width: 3rem;
+                border-radius: 100%;
+                // margin: 1rem 0.5rem 1rem 0.5rem;
+                font-family: "Fira Sans";
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: $primary__color--bkgd-cta-text;
+                cursor: pointer;
+                background-color: $primary__color--cta-active;
+                border: none;
+                box-shadow: -2.25px 2.125px 4px 1px rgba(0, 0, 0, .25);
+
+
+                
+                &:hover {
+                    background-color: $secondary__color--cta-hover;
+                    box-shadow: 1px 1px 2px $primary__color--text;
+                }
+
+                &:active {
+                    background-color: $secondary__color--cta-hover;
+                    // box-shadow: 1.5px 1.5px 2px $primary__color--text;
+                }
+
+            }
+        }
+        
 
     }
+
+    &__card {
+        padding: 2rem 1rem;
+        @include display-flex(row, center, center);
+        flex-wrap: wrap;
+        gap: 4%;
+
+        @include tablet {
+            // @include display-flex(row, center, center);
+            flex-wrap: wrap;
+            gap: 6%;
+            padding: 4rem 1.75rem;
+            max-width: 63.625rem;
+            margin: 0 auto;
+        }
+    }
+
+
+    
 }

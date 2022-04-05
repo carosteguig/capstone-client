@@ -3,6 +3,9 @@ import { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import RecipeCards from "../../components/RecipeCards/RecipeCards";
+import Calendar from "../../assets/images/icons/calendar.svg";
+import Clock from "../../assets/images/icons/clock.svg";
+import Trash from "../../assets/images/icons/trashcan.svg";
 // import Recipes from "../../components/Recipes/Recipes";
 
 
@@ -88,19 +91,35 @@ export default class HomePage extends Component {
     return (
       <div>
         <header className="header">
-          <div className="header__content">
-            <h1 className="header__content-title">A simple meal plan</h1>
-            <p className="header__content-text">Save time planning your meals and reduce food waste</p>
-            <Link className="header__content-link" to="/about">
-              <p className="header__content-btn">Learn More</p>
-            </Link>
+          <div className="header__main">
+            <div className="header__content">
+              <h1 className="header__content-title">A simple meal plan</h1>
+              <p className="header__content-text">Save time planning your meals and reduce food waste</p>
+              <Link className="header__content-link" to="/about">
+                <p className="header__content-btn">Learn More</p>
+              </Link>
+            </div>
           </div>
         </header>
         <main className="main">
-          <form>
-            <section className="main__box main__box--left">
+          <div className="main__content">
+            <div className="main__content-card">
+              <img className="main__content-icon" src={Calendar} alt="calendar" />
+              <p className="main__content-info">Create a weekly meal plan to help you stay organized</p>
+            </div>
+            <div className="main__content-card">
+              <img className="main__content-icon" src={Clock} alt="clock" />
+              <p className="main__content-info">Save time grocery shopping</p>
+            </div>
+            <div className="main__content-card">
+              <img className="main__content-icon" src={Trash} alt="trash can" />
+              <p className="main__content-info">Reduce food waste by using the same ingredients in different recipes</p>
+            </div>
+          </div> 
+          <form className="main__box">
+            <section className="main__box-section main__box-section--left">
               <p className="main__box-title">
-                Add the ingredients you want in your recipe/s
+                Add the ingredients you would like to use in your recipes
               </p>
               <input
                 className="main__box-input"
@@ -140,42 +159,35 @@ export default class HomePage extends Component {
               />
             </section>
 
-            <section className="main__box main__box--left">
+            <section className="main__box-section main__box-section--left">
               <p className="main__box-title">
-                Select the number of recipe/s you want to display
+                Select the number of recipes you would like to display
               </p>
-              <button className="main__box" type="button" onClick={() => this.callApi(1)}>1</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(2)}>2</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(3)}>3</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(4)}>4</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(5)}>5</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(6)}>6</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(7)}>7</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(8)}>8</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(9)}>9</button>
-              <button className="main__box" type="button" onClick={() => this.callApi(10)}>10</button>
+              <div className="main__box-container">
+                <div className="main__box-container-sub main__box-container-sub-top">
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(1)}>1</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(2)}>2</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(3)}>3</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(4)}>4</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(5)}>5</button>
+                </div>
+                <div className="main__box-container-sub main__box-container-sub-bottom">
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(6)}>6</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(7)}>7</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(8)}>8</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(9)}>9</button>
+                  <button className="main__box-container-nums" type="button" onClick={() => this.callApi(10)}>10</button>
+                </div>
+              </div>
             </section>
           </form>
-          <div>
-            <div>
-              {this.state.recipesByIngredients && this.state.recipesByIngredients
-                .map(dataRecipeCard => (
-                  <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
-                    <RecipeCards recipe={dataRecipeCard} />
-                  </Link>
-                ))}
-            </div>
-            {/* <div>
-              {this.state.recipesByIngredients && this.state.recipesByIngredients
-                .map(dataRecipeCard => (
-                  <Link to={`/recipipi/${dataRecipeCard.id}`} key={dataRecipeCard.id}> 
-                    <RecipeCards recipe={dataRecipeCard} />
-                  </Link>
-                ))}
-            </div>
-            <div>
-              <Recipes />
-            </div> */}
+          <div className="main__card">
+            {this.state.recipesByIngredients && this.state.recipesByIngredients
+              .map(dataRecipeCard => (
+                <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+                  <RecipeCards recipe={dataRecipeCard} />
+                </Link>
+              ))}
           </div>
 
         </main>

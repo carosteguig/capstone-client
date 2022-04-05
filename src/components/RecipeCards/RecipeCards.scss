@@ -1,0 +1,69 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/resets';
+
+
+.card {
+    text-align: center;
+    margin-bottom: 1.5rem;
+
+    @include tablet {
+        margin-bottom: 2.5rem;
+    }
+    
+    &__content {
+        width: 15rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: -2.25px 2.125px 4px 1px rgba(0, 0, 0, .125);
+
+        @include tablet {
+            width: 16.5rem;
+        }
+    }
+
+    &__figure {
+        position: relative;
+        filter:contrast(120%);
+        overflow: hidden;
+        height: 8rem;
+
+        @include tablet {
+            height: 9rem;
+        }
+        
+    }
+
+    // &__image {
+    //     // filter:contrast(120%);
+    //     // width: 0 auto;   
+    // }
+
+    &__overlay {
+        position: absolute;
+        background-color: black;
+        opacity: 0.35;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    &__header {
+        height: 3rem;
+        @include display-flex(row, center, center);
+    }
+
+    &__title {
+        @include labels-buttons__mobile;
+        margin: .5rem .4rem;
+        color: $primary__color--text;
+
+        @include tablet {
+            @include labels-buttons__tablet-desktop;
+        }
+    }
+
+
+
+}
