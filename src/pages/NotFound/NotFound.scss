@@ -1,22 +1,20 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/resets' as *;
-@use '../../styles/partials/variables' as *;
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
 
 .notFound {
     text-align: center;
     margin: 0 1rem;
 
     &__title {
-        // @include page-header__mobile;
-        // I modified the font size
+        @include page-header__mobile;
         font-size: 5rem;
         color: $primary__color--text;
-        margin-top: 8rem;
+        margin-top: 10rem;
 
         @include tablet {
             // I modified the font size
             font-size: 7rem;
-            margin-top: 10rem;
+            margin-top: 12rem;
 
             @include desktop {
                 margin-top: 12rem;
@@ -31,8 +29,7 @@
     }
 
     &__text {
-        // @include subheader__mobile;
-        // I modified the font size
+        @include subheader__mobile;
         font-size: 1rem;
         color: $primary__color--text;
         margin: 1.5rem 0 2.5rem 0;
@@ -50,7 +47,7 @@
         background-color: $primary__color--cta-active;
         color: $primary__color--bkgd-cta-text;
         border-radius: 0.25rem;
-        // @include labels-buttons__mobile;
+        @include labels-buttons__mobile;
         font-weight: 400;
         text-transform: uppercase;
         border: none;

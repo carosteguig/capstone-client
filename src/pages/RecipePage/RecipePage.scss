@@ -1,12 +1,12 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
-@import "../../styles/partials/resets";
+
 
 .recipe {
   &__nav {
     margin-top: -7.5rem;
     background-color: $primary__color--cta-active;
-    height: 7.25rem;
+    height: 7.5rem;
 
     @include tablet {
       // width: 100%;
@@ -277,7 +277,7 @@
 .link {
   @include display-flex(row, center,flex-end);
 
-  &-back {
+  &__back {
           @include body__mobile;
           color: $primary__color--cta-active;
           // position: fixed;

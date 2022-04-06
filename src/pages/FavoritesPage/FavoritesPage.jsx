@@ -3,6 +3,7 @@ import { Component } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import RecipeCards from '../../components/RecipeCards/RecipeCards';
+import { TabTitle } from '../../utils/GeneralFunctions';
 
 
 
@@ -33,6 +34,8 @@ export default class FavoritesPage extends Component {
     }
 
     render() {
+
+        TabTitle('Faves- Simple Meal');
 
         return (
             <>

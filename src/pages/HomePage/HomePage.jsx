@@ -6,6 +6,7 @@ import RecipeCards from "../../components/RecipeCards/RecipeCards";
 import Calendar from "../../assets/images/icons/calendar.svg";
 import Clock from "../../assets/images/icons/clock.svg";
 import Trash from "../../assets/images/icons/trashcan.svg";
+import { TabTitle } from '../../utils/GeneralFunctions';
 // import Recipes from "../../components/Recipes/Recipes";
 
 
@@ -87,6 +88,8 @@ export default class HomePage extends Component {
   }
 
   render() {
+
+    TabTitle('Simple Meal');
 
     return (
       <div>
@@ -184,7 +187,7 @@ export default class HomePage extends Component {
           <div className="main__card">
             {this.state.recipesByIngredients && this.state.recipesByIngredients
               .map(dataRecipeCard => (
-                <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+                <Link className="main__card-link" to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                   <RecipeCards recipe={dataRecipeCard} />
                 </Link>
               ))}

@@ -1,6 +1,6 @@
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
-@import '../../styles/partials/resets';
+
 
 
 .card {
@@ -67,7 +67,4 @@
             @include labels-buttons__tablet-desktop;
         }
     }
-
-
-
 }

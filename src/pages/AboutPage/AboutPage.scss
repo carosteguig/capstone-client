@@ -1,0 +1,39 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.header-about {
+    background-image: url('../../assets/images/images/about-page.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 180%;
+    height: 60vh;
+    margin-top:-7.5rem;
+    @include display-flex(column, center, flex-start);
+
+    @include tablet {
+        background-position:  40%;
+        background-size: cover;
+
+        @include desktop {
+
+        }
+    }
+
+    &__title {
+        @include page-header__mobile;
+        color: $primary__color--bkgd-cta-text;
+        margin-left: 4rem;
+        
+        @include tablet {
+            @include page-header__tablet-desktop;
+            margin-left: 6rem;
+
+            @include desktop {
+                @include page-header__tablet-desktop;
+                margin-left: 8rem;
+            }
+        }
+        
+    }
+}

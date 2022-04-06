@@ -14,7 +14,7 @@ export default function Navigation() {
                 <NavLink className='nav__list-link' to='/faves'>
                     <p className='nav__list-text'>Faves</p>
                 </NavLink>
-                <NavLink className='nav__list-link' to='/'>
+                <NavLink className='nav__list-link' to='/about'>
                     <p className='nav__list-text'>About</p>
                 </NavLink>
             </div>

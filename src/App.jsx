@@ -9,17 +9,15 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import FavoriteRecipeItem from './components/FavoriteRecipeItem/FavoriteRecipeItem';
-// import Recipes from './components/Recipes/Recipes';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 // import Footer from './components/Footer/Footer';
-
-
-// const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 
 export default function App() {
 
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Navigation />
         <Switch>
           <Route
@@ -37,21 +35,6 @@ export default function App() {
             render={(routerProps) =>
               <RecipePage {...routerProps} />
             } />
-          {/* <Route
-            path='/recipipi' exact
-            render={(routerProps) =>
-              <Recipes {...routerProps} />
-            } />
-          <Route
-            path='/recipipi/:id'
-            render={(routerProps) =>
-              <Recipes {...routerProps} />
-            } />   */}
-           <Route
-            path='/about' exact
-            render={(routerProps) =>
-              <AboutPage {...routerProps} />
-            } />
           <Route
             path='/faves' exact
             render={(routerProps) =>
@@ -61,8 +44,13 @@ export default function App() {
             path='/faves/:id'
             render={(routerProps) =>
               <FavoriteRecipeItem {...routerProps} />
-            } />             
-          <Route path='*' element= {NotFound} />
+            } />  
+            <Route
+            path='/about'
+            render={(routerProps) =>
+              <AboutPage {...routerProps} />
+            } />           
+          <Route component={NotFound} />
         </Switch>
         {/* <Footer /> */}
       </Router>
