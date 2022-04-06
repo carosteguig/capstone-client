@@ -3,6 +3,7 @@ import { Component } from "react";
 import axios from 'axios';
 import parse from "html-react-parser";
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Servings from '../../assets/images/icons/servings2.png';
 import Time from '../../assets/images/icons/clock-recipes.png';
 
@@ -14,6 +15,7 @@ export default class FavoriteRecipeItem extends Component {
     // Setting state for single recipe
     state = {
         selectedFaveRecipe: {},
+        redirect: false,
     }
 
     componentDidMount() {
@@ -31,7 +33,7 @@ export default class FavoriteRecipeItem extends Component {
             .then((res) => {
                 console.log(res);
                 this.setState({
-                    selectedFaveRecipe: res.data,
+                    selectedFaveRecipe: res.data,                   
                 });
             })
             .catch((err) => {
@@ -51,13 +53,19 @@ export default class FavoriteRecipeItem extends Component {
             .delete(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}/delete`)
             .then((res) => {
                 console.log(res.data);
+                console.log('"your recipe has been deleted from Faves"');
+                this.setState({redirect: true})
             })
             .catch((err) => console.log(err));
     }
 
 
     render() {
-        // console.log(this.state.selectedRecipe.id);
+
+        if (this.state.redirect) {
+            return <Redirect to="/faves" />
+        }
+
         return (
             <>
                 <div className='favorite__nav'>
@@ -106,37 +114,15 @@ export default class FavoriteRecipeItem extends Component {
                                 (step) => <li className='main-fav__container-step' key={step.number}>{step.step}</li>)}
                     </ol>
                     </div>
+                    <div>
+                        
+                    </div>
                     <button className='main-fav__container-btn' onClick={this.deleteRecipe}>Delete</button>
+                    <Link className='fave-item__link' to="/faves">
+                        <p className='fave-item__link-back'>Back to Faves Page</p>
+                    </Link>
                 </main>
             </>
         );
     }
 }
-
-
-{/* <img src={this.state.selectedFaveRecipe.image} alt={this.state.selectedFaveRecipe.title} />
-                <main>
-
-                    <h4>Servings: {this.state.selectedFaveRecipe.servings}</h4>
-                    <h4>Prep time: {this.state.selectedFaveRecipe.readyInMinutes} minutes</h4>
-                    {parse(`${this.state.selectedFaveRecipe.summary}`)}
-                    <h3>Ingredients</h3>
-                    {/* Collecting steps instruction from objects inside and array */}
-                    // <ul>
-                    //     {this.state.selectedFaveRecipe.extendedIngredients &&
-                    //         this.state.selectedFaveRecipe.extendedIngredients.map(
-                    //             (ingredient) => <li key={ingredient.id}>{ingredient.original}</li>)}
-
-                    // </ul>
-                    // <h3>Steps</h3>
-                    {/* Collecting steps instruction from objects inside and array */}
-                //     <ol>
-                //         {this.state.selectedFaveRecipe.analyzedInstructions &&
-                //             this.state.selectedFaveRecipe.analyzedInstructions[0].steps.map(
-                //                 (step) => <li key={step.number}>{step.step}</li>)}
-
-                //     </ol>
-                //     <button onClick={this.deleteRecipe}>Delete</button>
-
-
-                // </main> */}

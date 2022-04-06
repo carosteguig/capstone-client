@@ -3,10 +3,9 @@ import { Component } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import RecipeCards from '../../components/RecipeCards/RecipeCards';
-// import parse from "html-react-parser";
 
-// API key
-// const apiKey = "75770683cc6b418c8d40e409a13a5de2";
+
+
 
 export default class FavoritesPage extends Component {
 
@@ -50,6 +49,9 @@ export default class FavoritesPage extends Component {
                             ))}
                     </div>
                 </div>
+                <Link className='fave__link'to="/">
+                <p className='fave__link-back'>Back to Main Page</p>
+                </Link>
             </>
         );
     }

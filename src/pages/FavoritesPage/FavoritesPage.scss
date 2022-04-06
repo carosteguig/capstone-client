@@ -56,6 +56,32 @@
         }
     }
 
+    &__link {
+        @include display-flex(row, center,flex-end);
+
+        &-back {
+                @include body__mobile;
+                color: $primary__color--cta-active;
+                // position: fixed;
+                bottom: 0;
+                width: 10rem;
+                height: 3.25rem;
+                text-align: center;
+                background-image: url('../../assets/images/icons/arrow_back.svg');
+                background-position: 2px 4px; /* Center the image */
+                background-repeat: no-repeat;
+                cursor: pointer;
+
+                &:hover {
+                    color: $secondary__color--cta-hover;
+
+                }
+
+            }
+    }
+
+    
+
 }
 
 

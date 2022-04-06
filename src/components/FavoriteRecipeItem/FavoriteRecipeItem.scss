@@ -33,7 +33,7 @@
     @include tablet {
       @include section-header__tablet-desktop;
       text-align: left;
-      margin-bottom: 2rem;
+      margin: 0.5rem 0 3rem 0;
     }
   }
 
@@ -141,7 +141,7 @@
 
     @include tablet {
         @include display-flex(row, space-between, none);
-        padding: 2rem 2rem;
+        padding: 4rem 2rem 3rem 2rem;
         gap: 2rem;
         max-width: 60rem;
         margin: 0 auto;
@@ -191,11 +191,16 @@
     border-bottom: 1px solid $primary__color--cta-active;
 
     @include tablet {
-        @include subheader__tablet-desktop
+        @include subheader__tablet-desktop;
+        margin: 1rem 3rem 1rem 3rem;
     }
 
     &--steps {
-        margin: 2rem 3rem;
+
+        @include desktop {
+            margin: 2rem 3rem;
+        }
+        
     }
   }
 
@@ -268,6 +273,30 @@
       background-color: $secondary__color--cta-hover;
     }
   }
+}
+
+.fave-item__link {
+    @include display-flex(row, center,flex-end);
+
+    &-back {
+            @include body__mobile;
+            color: $primary__color--cta-active;
+            // position: fixed;
+            bottom: 0;
+            width: 10rem;
+            height: 3.25rem;
+            text-align: center;
+            background-image: url('../../assets/images/icons/arrow_back.svg');
+            background-position: 2px 4px; /* Center the image */
+            background-repeat: no-repeat;
+            cursor: pointer;
+
+            &:hover {
+                color: $secondary__color--cta-hover;
+
+            }
+
+        }
 }
 
 ol {

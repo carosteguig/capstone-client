@@ -3,6 +3,7 @@ import { Component } from "react";
 import axios from 'axios';
 import parse from "html-react-parser";
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Servings from '../../assets/images/icons/servings2.png';
 import Time from '../../assets/images/icons/clock-recipes.png';
 
@@ -66,7 +67,7 @@ export default class RecipePage extends Component {
 
 
     render() {
-        // console.log(this.state.selectedRecipe.id);
+
         if (this.state.redirect) {
             return <Redirect to="/faves" />
         }
@@ -119,7 +120,10 @@ export default class RecipePage extends Component {
 
                         </ol>
                     </div>
-                    <button className='main__container-btn' onClick={this.postRecipe}/*{() => postRecipe()}*/>Add Favourites</button>
+                    <button className='main__container-btn' onClick={this.postRecipe}>Add Favourites</button>
+                    <Link className='link' to="/">
+                        <p className='link__back'>Back to Main Page</p>
+                    </Link>
                 </main>
             </>
         );
