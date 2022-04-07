@@ -8,7 +8,7 @@ import Servings from '../../assets/images/icons/servings2.png';
 import Time from '../../assets/images/icons/clock-recipes.png';
 
 // API key
-const apiKey = "75770683cc6b418c8d40e409a13a5de2";
+const apiKey= process.env.REACT_APP_API_KEY;
 
 export default class RecipePage extends Component {
 

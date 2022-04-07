@@ -6,8 +6,6 @@ import RecipeCards from '../../components/RecipeCards/RecipeCards';
 import { TabTitle } from '../../utils/GeneralFunctions';
 
 
-
-
 export default class FavoritesPage extends Component {
 
     //Setting state for favourites
@@ -52,8 +50,8 @@ export default class FavoritesPage extends Component {
                             ))}
                     </div>
                 </div>
-                <Link className='fave__link'to="/">
-                <p className='fave__link-back'>Back to Main Page</p>
+                <Link className='fave__link' to="/">
+                    <p className='fave__link-back'>Back to Main Page</p>
                 </Link>
             </>
         );

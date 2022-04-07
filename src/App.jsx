@@ -10,7 +10,7 @@ import RecipePage from './pages/RecipePage/RecipePage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import FavoriteRecipeItem from './components/FavoriteRecipeItem/FavoriteRecipeItem';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
-// import Footer from './components/Footer/Footer';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
 
@@ -52,7 +52,7 @@ export default function App() {
             } />           
           <Route component={NotFound} />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
 
     </>

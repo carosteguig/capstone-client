@@ -5,17 +5,19 @@
 
 .card {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin: 3rem 1.25rem 0rem 1.25rem;
 
-    @include tablet {
-        margin-bottom: 2.5rem;
-    }
     
     &__content {
         width: 15rem;
         border-radius: 0.5rem;
         overflow: hidden;
         box-shadow: -2.25px 2.125px 4px 1px rgba(0, 0, 0, .125);
+
+        &:hover {
+            box-shadow: -4.25px 4.125px 4px 1px rgba(0, 0, 0, .25);
+            border-radius: 1rem;
+        }
 
         @include tablet {
             width: 16.5rem;
@@ -35,10 +37,6 @@
     }
 
     &__image {
-        // display: block;
-        // margin-left: auto;
-        // margin-right: auto;
-        // width: 100%; 
         object-position: -30px -45px;
         width: 120%
     }
@@ -51,6 +49,10 @@
         height: 100%;
         left: 0;
         top: 0;
+
+        &:hover {
+            opacity: 0.25;
+        }
     }
 
     &__header {
