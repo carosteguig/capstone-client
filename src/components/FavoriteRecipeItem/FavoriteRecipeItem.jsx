@@ -62,7 +62,9 @@ export default class FavoriteRecipeItem extends Component {
 
     render() {
 
-        if (this.state.redirect) {
+        const { selectedFaveRecipe, redirect } = this.state;
+
+        if (redirect) {
             return <Redirect to="/faves" />
         }
 
@@ -72,35 +74,35 @@ export default class FavoriteRecipeItem extends Component {
                 </div>
                 <header className='favorite__header'>
                     <div className='favorite__title'>
-                        <h1 className='favorite__title-text'>{this.state.selectedFaveRecipe.title}</h1>
+                        <h1 className='favorite__title-text'>{selectedFaveRecipe.title}</h1>
                     </div>
 
                     <div className='favorite__container'>
                         <div className='favorite__info'>
                             <div className='favorite__info-box'>
                                 <img className='favorite__info-icon' src={Servings} alt='meal plate' />
-                                <h4 className='favorite__info-text'>{this.state.selectedFaveRecipe.servings} Servings</h4>
+                                <h4 className='favorite__info-text'>{selectedFaveRecipe.servings} Servings</h4>
                             </div>
                             <div className='favorite__info-box'>
                                 <img className='favorite__info-icon' src={Time} alt='clock' />
-                                <h4 className='favorite__info-text'>Ready in {this.state.selectedFaveRecipe.readyInMinutes} min.</h4>
+                                <h4 className='favorite__info-text'>Ready in {selectedFaveRecipe.readyInMinutes} min.</h4>
                             </div>
                         </div>
                         <div className='favorite__img-section'>
                             <div className="favorite__img-overlay"></div>
-                            <img className='favorite__img-photo' src={this.state.selectedFaveRecipe.image} alt={this.state.selectedFaveRecipe.title} />
+                            <img className='favorite__img-photo' src={selectedFaveRecipe.image} alt={selectedFaveRecipe.title} />
                         </div>
                     </div>
                 </header>
                 <main className='main-fav__container'>
                     <div className='main-fav__container-section'>
-                        <p className='main-fav__container-text'>{parse(`${this.state.selectedFaveRecipe.summary}`)}</p>
+                        <p className='main-fav__container-text'>{parse(`${selectedFaveRecipe.summary}`)}</p>
                         <div className='main-fav__container-list--ing'>
                             <h3 className='main-fav__container-title'>Ingredients</h3>
                             {/* Collecting ingreadients from objects inside and array */}
                             <ul className='main-fav__container-items'>
-                                {this.state.selectedFaveRecipe.extendedIngredients &&
-                                    this.state.selectedFaveRecipe.extendedIngredients.map(
+                                {selectedFaveRecipe.extendedIngredients &&
+                                    selectedFaveRecipe.extendedIngredients.map(
                                         (ingredient) => <li className='main-fav__container-item' key={ingredient.id}>{ingredient.original}</li>)}
                             </ul>
                         </div>
@@ -109,8 +111,8 @@ export default class FavoriteRecipeItem extends Component {
                         <h3 className='main-fav__container-title main-fav__container-title--steps'>Steps</h3>
                         {/* Collecting steps instruction from objects inside and array */}
                         <ol className='main-fav__container-steps'>
-                        {this.state.selectedFaveRecipe.analyzedInstructions &&
-                            this.state.selectedFaveRecipe.analyzedInstructions[0].steps.map(
+                        {selectedFaveRecipe.analyzedInstructions &&
+                            selectedFaveRecipe.analyzedInstructions[0].steps.map(
                                 (step) => <li className='main-fav__container-step' key={step.number}>{step.step}</li>)}
                     </ol>
                     </div>

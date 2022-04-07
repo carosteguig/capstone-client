@@ -55,16 +55,25 @@
         max-width: 80rem;
         margin: 0 auto;
         width: 100%;
-        // padding: 4.5rem 0 0 2rem;
+        padding: 1.5rem 0 0 2rem;
 
     }
 
     &__container {
-        padding: 3rem 1rem;
+        @include display-flex(column, none, center);
+        padding: 2rem 1rem 1rem 1rem;
 
         @include tablet {
-            padding: 4rem 1.75rem;
-            width: 60%
+            padding: 3rem 1.75rem;
+            margin: 0 auto;
+            width: 60%;
+
+            @include desktop {
+                max-width: 80rem;
+                margin: 0 auto;
+                width: 60%;
+            }
+
 
 
         }
@@ -73,7 +82,11 @@
     &__text {
         @include body__mobile;
         color: $primary__color--text;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
+
+        @include tablet {
+            margin-bottom: 2.5rem;
+        }
 
         &--green {
             @include body__mobile;

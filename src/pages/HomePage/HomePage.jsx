@@ -85,7 +85,7 @@ export default class HomePage extends Component {
   }
 
   render() {
-  
+    const { recipesByIngredients,  } = this.state;
     TabTitle('Simple Meal');
 
     return (
@@ -182,7 +182,7 @@ export default class HomePage extends Component {
             </section>
           </form>
           <div className="main__card">
-            {this.state.recipesByIngredients && this.state.recipesByIngredients
+            {recipesByIngredients && recipesByIngredients
               .map(dataRecipeCard => (
                 <Link className="main__card-link" to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                   <RecipeCards recipe={dataRecipeCard} />

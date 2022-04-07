@@ -55,8 +55,11 @@ export default class Recipes extends Component {
 
 
     render() {
+
+        const { redirect, selectedRecipe  } = this.state;
+
         // console.log(this.state.selectedRecipe.id);
-        if (this.state.redirect) {
+        if (redirect) {
             return <Redirect to="/faves" />
         }
 
@@ -64,26 +67,26 @@ export default class Recipes extends Component {
         return (
             <>
                 <header>
-                    <img src={this.state.selectedRecipe.image} alt={this.state.selectedRecipe.title} />
+                    <img src={selectedRecipe.image} alt={selectedRecipe.title} />
                 </header>
                 <main>
-                    <h1>{this.state.selectedRecipe.title}</h1>
-                    <h4>Servings: {this.state.selectedRecipe.servings}</h4>
-                    <h4>Prep time: {this.state.selectedRecipe.readyInMinutes} minutes</h4>
-                    {parse(`${this.state.selectedRecipe.summary}`)}
+                    <h1>{selectedRecipe.title}</h1>
+                    <h4>Servings: {selectedRecipe.servings}</h4>
+                    <h4>Prep time: {selectedRecipe.readyInMinutes} minutes</h4>
+                    {parse(`${selectedRecipe.summary}`)}
                     <h3>Ingredients</h3>
                     {/* Collecting steps instruction from objects inside and array */}
                     <ul>
-                        {this.state.selectedRecipe.extendedIngredients &&
-                            this.state.selectedRecipe.extendedIngredients.map(
+                        {selectedRecipe.extendedIngredients &&
+                            selectedRecipe.extendedIngredients.map(
                                 (ingredient) => <li key={ingredient.id}>{ingredient.original}</li>)}
 
                     </ul>
                     <h3>Steps</h3>
                     {/* Collecting steps instruction from objects inside and array */}
                     <ol>
-                        {this.state.selectedRecipe.analyzedInstructions &&
-                            this.state.selectedRecipe.analyzedInstructions[0].steps.map(
+                        {selectedRecipe.analyzedInstructions &&
+                            selectedRecipe.analyzedInstructions[0].steps.map(
                                 (step) => <li key={step.number}>{step.step}</li>)}
 
                     </ol>

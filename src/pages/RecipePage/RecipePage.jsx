@@ -68,7 +68,9 @@ export default class RecipePage extends Component {
 
     render() {
 
-        if (this.state.redirect) {
+        const { redirect, selectedRecipe } = this.state;
+
+        if (redirect) {
             return <Redirect to="/faves" />
         }
         return (
@@ -77,34 +79,34 @@ export default class RecipePage extends Component {
                 </div>
                 <header className='recipe__header'>
                     <div className='recipe__title'>
-                        <h1 className='recipe__title-text'>{this.state.selectedRecipe.title}</h1>
+                        <h1 className='recipe__title-text'>{selectedRecipe.title}</h1>
                     </div>
                     <div className='recipe__container'>
                         <div className='recipe__info'>
                             <div className='recipe__info-box'>
                                 <img className='recipe__info-icon' src={Servings} alt='meal plate' />
-                                <h4 className='recipe__info-text'>{this.state.selectedRecipe.servings} Servings</h4>
+                                <h4 className='recipe__info-text'>{selectedRecipe.servings} Servings</h4>
                             </div>
                             <div className='recipe__info-box'>
                                 <img className='recipe__info-icon' src={Time} alt='clock' />
-                                <h4 className='recipe__info-text'>Ready in {this.state.selectedRecipe.readyInMinutes} min.</h4>
+                                <h4 className='recipe__info-text'>Ready in {selectedRecipe.readyInMinutes} min.</h4>
                             </div>
                         </div>
                         <div className='recipe__img-section'>
                             <div className="recipe__img-overlay"></div>
-                            <img className='recipe__img-photo' src={this.state.selectedRecipe.image} alt={this.state.selectedRecipe.title} />
+                            <img className='recipe__img-photo' src={selectedRecipe.image} alt={selectedRecipe.title} />
                         </div>
                     </div>
                 </header>
                 <main className='main__container'>
                     <div className='main__container-section'>
-                        <p className='main__container-text'>{parse(`${this.state.selectedRecipe.summary}`)}</p>
+                        <p className='main__container-text'>{parse(`${selectedRecipe.summary}`)}</p>
                         <div className='main__container-list--ing'>
                             <h3 className='main__container-title'>Ingredients</h3>
                             {/* Collecting ingreadients from objects inside and array */}
                             <ul className='main__container-items'>
-                                {this.state.selectedRecipe.extendedIngredients &&
-                                    this.state.selectedRecipe.extendedIngredients.map(
+                                {selectedRecipe.extendedIngredients &&
+                                    selectedRecipe.extendedIngredients.map(
                                         (ingredient) => <li className='main__container-item' key={ingredient.id}>{ingredient.original}</li>)}
 
                             </ul>
@@ -114,8 +116,8 @@ export default class RecipePage extends Component {
                         <h3 className='main__container-title main__container-title--steps'>Steps</h3>
                         {/* Collecting steps instruction from objects inside and array */}
                         <ol className='main__container-steps'>
-                            {this.state.selectedRecipe.analyzedInstructions &&
-                                this.state.selectedRecipe.analyzedInstructions[0].steps.map(
+                            {selectedRecipe.analyzedInstructions &&
+                                selectedRecipe.analyzedInstructions[0].steps.map(
                                     (step) => <li className='main__container-step' key={step.number}>{step.step}</li>)}
 
                         </ol>

@@ -1,18 +1,20 @@
 import './RecipeCards.scss';
 
 export default function RecipeCards(props) {
-  console.log(props);
+
+  const { recipe } = props;
+
   return (
 
     <div className="card">
       <ul className="card__container">
-        <li className="card__content" key={props.recipe.id}>
+        <li className="card__content" key={recipe.id}>
           <div className="card__figure">
             <div className="card__overlay"></div>
-            <img className="card__image" src={props.recipe.image} alt={props.recipe.title} />
+            <img className="card__image" src={recipe.image} alt={recipe.title} />
           </div>
           <div className="card__header">
-            <h3 className="card__title">{props.recipe.title}</h3>
+            <h3 className="card__title">{recipe.title}</h3>
           </div>
         </li>
       </ul>

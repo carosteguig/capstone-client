@@ -33,6 +33,8 @@ export default class FavoritesPage extends Component {
 
     render() {
 
+        const { favoriteRecipes,  } = this.state;
+
         TabTitle('Faves- Simple Meal');
 
         return (
@@ -42,7 +44,7 @@ export default class FavoritesPage extends Component {
                 <div className='fave__container'>
                     <h1 className='fave__title'>Favorites</h1>
                     <div className="fave__cards">
-                        {this.state.favoriteRecipes && this.state.favoriteRecipes
+                        {favoriteRecipes && favoriteRecipes
                             .map(dataRecipeCard => (
                                 <Link to={`/faves/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                                     <RecipeCards className="fave__card-item" recipe={dataRecipeCard} />
