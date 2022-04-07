@@ -1,6 +1,6 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/resets' as *;
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
 
 .nav {
     @include display-flex(column, none, center);
@@ -8,7 +8,7 @@
 
     @include tablet {
         @include display-flex(row, space-between, center);
-        padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+        padding: 1rem 1.25rem 0.75rem 1.25rem;
 
         @include desktop {
             max-width: 80rem;

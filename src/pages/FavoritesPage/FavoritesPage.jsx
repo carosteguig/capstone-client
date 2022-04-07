@@ -3,10 +3,8 @@ import { Component } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import RecipeCards from '../../components/RecipeCards/RecipeCards';
-// import parse from "html-react-parser";
+import { TabTitle } from '../../utils/GeneralFunctions';
 
-// API key
-// const apiKey = "75770683cc6b418c8d40e409a13a5de2";
 
 export default class FavoritesPage extends Component {
 
@@ -35,6 +33,10 @@ export default class FavoritesPage extends Component {
 
     render() {
 
+        const { favoriteRecipes,  } = this.state;
+
+        TabTitle('Faves- Simple Meal');
+
         return (
             <>
                 <div className='fave__nav'>
@@ -42,7 +44,7 @@ export default class FavoritesPage extends Component {
                 <div className='fave__container'>
                     <h1 className='fave__title'>Favorites</h1>
                     <div className="fave__cards">
-                        {this.state.favoriteRecipes && this.state.favoriteRecipes
+                        {favoriteRecipes && favoriteRecipes
                             .map(dataRecipeCard => (
                                 <Link to={`/faves/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                                     <RecipeCards className="fave__card-item" recipe={dataRecipeCard} />
@@ -50,6 +52,9 @@ export default class FavoritesPage extends Component {
                             ))}
                     </div>
                 </div>
+                <Link className='fave__link' to="/">
+                    <p className='fave__link-back'>Back to Main Page</p>
+                </Link>
             </>
         );
     }

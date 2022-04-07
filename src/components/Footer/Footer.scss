@@ -1,0 +1,14 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+.footer {
+    padding: 1.5rem 0;
+    margin: 2rem 1rem 0 1rem;
+
+    &__text {
+        text-align: center;
+        color: $primary__color--cta-active;
+        @include body__mobile;
+
+    }
+}

@@ -6,11 +6,9 @@ import RecipeCards from "../../components/RecipeCards/RecipeCards";
 import Calendar from "../../assets/images/icons/calendar.svg";
 import Clock from "../../assets/images/icons/clock.svg";
 import Trash from "../../assets/images/icons/trashcan.svg";
-// import Recipes from "../../components/Recipes/Recipes";
+import { TabTitle } from '../../utils/GeneralFunctions';
 
-
-// API key
-const apiKey = "75770683cc6b418c8d40e409a13a5de2";
+const apiKey= process.env.REACT_APP_API_KEY;
 
 export default class HomePage extends Component {
 
@@ -87,6 +85,8 @@ export default class HomePage extends Component {
   }
 
   render() {
+    const { recipesByIngredients,  } = this.state;
+    TabTitle('Simple Meal');
 
     return (
       <div>
@@ -182,9 +182,9 @@ export default class HomePage extends Component {
             </section>
           </form>
           <div className="main__card">
-            {this.state.recipesByIngredients && this.state.recipesByIngredients
+            {recipesByIngredients && recipesByIngredients
               .map(dataRecipeCard => (
-                <Link to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
+                <Link className="main__card-link" to={`/recipe/${dataRecipeCard.id}`} key={dataRecipeCard.id}>
                   <RecipeCards recipe={dataRecipeCard} />
                 </Link>
               ))}

@@ -1,7 +1,6 @@
-@import '../../styles/partials/globals';
 @import '../../styles/partials/variables';
 @import '../../styles/partials/mixins';
-@import '../../styles/partials/resets';
+
 
 
 .header {
@@ -68,18 +67,21 @@
         &-btn {
             @include labels-buttons__mobile;
             background-color: $primary__color--cta-active;
-            width: 7rem;
+            width: 8rem;
             text-align: center;
             padding: 0.75rem 0;
             border-radius: 0.375rem;
             letter-spacing: 0.0825rem;
+            box-shadow: 2.25px 2.125px 4px 1px rgba(0, 0, 0, .125);
 
             @include tablet {
                 @include labels-buttons__tablet-desktop;
+                width: 9rem;
             }
 
             &:hover {
                 background-color: $secondary__color--cta-hover; 
+                box-shadow: -4.25px 4.125px 4px 1px rgba(0, 0, 0, .25);
             }
         }
     }
@@ -93,7 +95,6 @@
         @include display-flex(column, none, center);
         padding: 3rem 1rem 3rem 1rem;
         gap: 3rem;
-        // max-width: 26.875rem;
 
         @include tablet {
             @include display-flex(row, space-between, flex-start);
@@ -102,7 +103,7 @@
 
             @include desktop {
                 max-width: 70rem;
-                padding: 4.5rem 1.75rem 4rem 1.75rem;
+                padding: 4.5rem 0rem 4rem 0rem;
             }
         }
 
@@ -127,6 +128,7 @@
 
     &__box {
         background-color: $secondary__color--bkgd;
+        box-shadow: 0px 0.125px 4px 1px rgba(0, 0, 0, .125);
         width: 100%;
         @include display-flex(column, none, center);
 
@@ -201,7 +203,6 @@
         }
 
         &-container {
-            // text-align: center;
             margin-bottom: 3rem;
 
             @include tablet {
@@ -212,7 +213,6 @@
 
             &-sub {
                 @include display-flex(row, space-between, none);
-                // max-width: 26.875rem;
 
                 &-top {
                     margin-bottom: 1rem;
@@ -229,7 +229,6 @@
                 height: 3rem;
                 width: 3rem;
                 border-radius: 100%;
-                // margin: 1rem 0.5rem 1rem 0.5rem;
                 font-family: "Fira Sans";
                 font-size: 1.5rem;
                 font-weight: 500;
@@ -248,7 +247,6 @@
 
                 &:active {
                     background-color: $secondary__color--cta-hover;
-                    // box-shadow: 1.5px 1.5px 2px $primary__color--text;
                 }
 
             }
@@ -258,18 +256,22 @@
     }
 
     &__card {
-        padding: 2rem 1rem;
-        @include display-flex(row, center, center);
+        padding: 0rem 1rem 0rem 1rem;
+        @include display-flex(row, center, none);
         flex-wrap: wrap;
-        gap: 4%;
 
         @include tablet {
-            // @include display-flex(row, center, center);
+            @include display-flex(row, center, center);
             flex-wrap: wrap;
-            gap: 6%;
-            padding: 4rem 1.75rem;
-            max-width: 63.625rem;
-            margin: 0 auto;
+
+            padding: 0rem 1.75rem 0rem 1.75rem;
+
+
+            @include desktop {
+                max-width: 80rem;
+                margin: 0 auto;
+
+            }
         }
     }
 

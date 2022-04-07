@@ -1,0 +1,98 @@
+@import '../../styles/partials/variables';
+@import '../../styles/partials/mixins';
+
+
+.header-about {
+    background-image: url('../../assets/images/images/about-page.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 180%;
+    height: 60vh;
+    margin-top:-11rem;
+    @include display-flex(column, center, flex-start);
+
+    @include tablet {
+        background-position:  40%;
+        background-size: cover;
+        height: 70vh;
+
+        @include desktop {
+
+        }
+    }
+
+    &__container {
+
+        @include desktop {
+            max-width: 80rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+
+    &__title {
+        @include page-header__mobile;
+        color: $primary__color--bkgd-cta-text;
+        margin: 2.5rem 0 0 1rem;
+        
+        @include tablet {
+            @include page-header__tablet-desktop;
+            margin: 3.5rem 0 0 3rem;
+
+            @include desktop {
+                max-width: 80rem;
+                margin: 0 auto;
+                width: 100%;
+                margin: 4.5rem 0 0 3rem;
+            }  
+        }  
+    }
+}
+
+.header-main {
+
+    @include desktop {
+        max-width: 80rem;
+        margin: 0 auto;
+        width: 100%;
+        padding: 1.5rem 0 0 2rem;
+
+    }
+
+    &__container {
+        @include display-flex(column, none, center);
+        padding: 2rem 1rem 1rem 1rem;
+
+        @include tablet {
+            padding: 3rem 1.75rem;
+            margin: 0 auto;
+            width: 60%;
+
+            @include desktop {
+                max-width: 80rem;
+                margin: 0 auto;
+                width: 60%;
+            }
+
+
+
+        }
+    }
+
+    &__text {
+        @include body__mobile;
+        color: $primary__color--text;
+        margin-bottom: 2rem;
+
+        @include tablet {
+            margin-bottom: 2.5rem;
+        }
+
+        &--green {
+            @include body__mobile;
+            color: $primary__color--cta-active;
+            font-weight: 500;
+
+        }
+    }
+}
