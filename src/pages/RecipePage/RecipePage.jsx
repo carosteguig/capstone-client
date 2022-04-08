@@ -124,7 +124,7 @@ export default class RecipePage extends Component {
                     </div>
                     <button className='main__container-btn' onClick={this.postRecipe}>Add Favourites</button>
                     <Link className='link' to="/">
-                        <p className='link__back'>Back to Main Page</p>
+                        <p className='link__back'>Back to Home Page</p>
                     </Link>
                 </main>
             </>

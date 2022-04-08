@@ -53,7 +53,7 @@ export default class FavoritesPage extends Component {
                     </div>
                 </div>
                 <Link className='fave__link' to="/">
-                    <p className='fave__link-back'>Back to Main Page</p>
+                    <p className='fave__link-back'>Back to Home Page</p>
                 </Link>
             </>
         );

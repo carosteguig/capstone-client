@@ -49,13 +49,13 @@
     }
 }
 
-.header-main {
+.main-about {
 
     @include desktop {
         max-width: 80rem;
         margin: 0 auto;
         width: 100%;
-        padding: 1.5rem 0 0 2rem;
+        padding: 1.5rem 2rem 0 2rem;
 
     }
 
@@ -73,10 +73,7 @@
                 margin: 0 auto;
                 width: 60%;
             }
-
-
-
-        }
+        }   
     }
 
     &__text {
@@ -95,4 +92,33 @@
 
         }
     }
+
+    &__link {
+        @include display-flex(row, center,flex-end);
+    
+        &-back {
+                @include body__mobile;
+                color: $primary__color--cta-active;
+                bottom: 0;
+                width: 10rem;
+                height: 1.25rem;
+                text-align: center;
+                background-image: url('../../assets/images/icons/arrow_back.svg');
+                background-position: 1.4375rem 1.25rem; /* Center the image */
+                background-repeat: no-repeat;
+                cursor: pointer;
+                padding: 1rem 1.5rem;
+                background-color: $primary__color--bkgd-cta-text;
+                box-shadow: -1.25px -1.125px 4px 1px rgba(0, 0, 0, 0.1);
+                border-radius: 0.5rem;
+    
+                &:hover {
+                    color: $secondary__color--cta-hover;
+                    box-shadow: -1.25px -1.125px 4px 1px rgba(0, 0, 0, .25);
+                    border-radius: 0.5rem;
+    
+                }
+    
+            }
+        }
 }
