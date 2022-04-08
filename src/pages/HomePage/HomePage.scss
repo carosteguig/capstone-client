@@ -237,18 +237,18 @@
                 background-color: $primary__color--cta-active;
                 border: none;
                 box-shadow: -2.25px 2.125px 4px 1px rgba(0, 0, 0, .25);
-
+                transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 
                 
                 &:hover {
                     background-color: $secondary__color--cta-hover;
-                    box-shadow: 1px 1px 2px $primary__color--text;
+                    box-shadow: 2.25px -2.125px 4px 1px rgba(0, 0, 0, .25);
+                    border: 1px solid $primary__color--cta-active;
                 }
 
                 &:active {
                     background-color: $secondary__color--cta-hover;
                 }
-
             }
         }
         

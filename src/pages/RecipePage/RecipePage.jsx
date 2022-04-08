@@ -50,7 +50,7 @@ export default class RecipePage extends Component {
         console.log(this.state.selectedRecipe.id);
         // Post fave recipe to server
         axios
-            .post(`${process.env.REACT_APP_API_URL}/recipes` /*not sure if this is correct*/, {
+            .post(`${process.env.REACT_APP_API_URL}/recipes`, {
                 id: recipeId,
                 title: recipeTitle,
                 image: recipeImage,
