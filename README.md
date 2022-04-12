@@ -1,3 +1,6 @@
+![logo verde](https://user-images.githubusercontent.com/34225929/162877354-061a5166-0400-4d34-8591-7ea947834200.png)
+
+
 # Simple Meal
 
 Simple Meal is a web app that helps people to simplify their meal planning and grocery shopping ritual. The idea was to create a very easy-to-use app that will provide recipes depending on what ingredients the user wants to eat or buy.
