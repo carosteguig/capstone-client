@@ -6,6 +6,10 @@ Yes, the goal is to simplify grocery shopping but also is to reduce food waste. 
 
 ![Simple Meal-gif1](https://user-images.githubusercontent.com/34225929/162876920-5fe340dd-ef44-47f0-b8fb-7260110c6be1.gif)
 
+The web app is responsive, for mobile, tablet and desktop.
+
+The main focus was to design a User-Friendly and straightforward web app,  easy to use. Always aiming to create a good experience.
+
 
 ## Technologies used
 
