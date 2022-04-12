@@ -4,6 +4,9 @@ Simple Meal is a web app that helps people to simplify their meal planning and g
 
 Yes, the goal is to simplify grocery shopping but also is to reduce food waste. Using the same ingredients in different meals during the week should help to use the majority of the product before it expires, HENCE, save money.
 
+![Simple Meal-gif1](https://user-images.githubusercontent.com/34225929/162876920-5fe340dd-ef44-47f0-b8fb-7260110c6be1.gif)
+
+
 ## Technologies used
 
 ### Front-end:
@@ -15,7 +18,7 @@ Yes, the goal is to simplify grocery shopping but also is to reduce food waste. 
 - Express
 
 ### Others:
-- GitHubd
+- GitHub
 - Axios
 - Spoonacular API
 
