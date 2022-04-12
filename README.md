@@ -1,4 +1,5 @@
-![logo verde](https://user-images.githubusercontent.com/34225929/162877354-061a5166-0400-4d34-8591-7ea947834200.png)
+![Simple Meal logo- small](https://user-images.githubusercontent.com/34225929/162877655-428effb2-1a2f-425d-aba1-3e4dc6082a0b.png)
+
 
 
 # Simple Meal
