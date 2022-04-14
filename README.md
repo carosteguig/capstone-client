@@ -16,7 +16,10 @@ The main focus was to design a User-Friendly and straightforward web app,  easy 
 
 The web app is responsive, for mobile, tablet and desktop.
 
+### Site Map:
 ![Site Map](https://user-images.githubusercontent.com/34225929/163482109-bf891d39-fe36-447e-80a7-8a246e44865e.jpg)
+![Site Map-SMALL](https://user-images.githubusercontent.com/34225929/163482503-d5dc69a6-795d-4979-9d5a-bdf4fc0ca252.jpg)
+
 
 ## Technologies used
 
