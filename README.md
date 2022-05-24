@@ -36,6 +36,33 @@ The web app is responsive, for mobile, tablet and desktop.
 - Spoonacular API
 
 
+# Usage
+To run this project locally, follow these steps:
+
+Clone the server repository
+
+**$ git clone https://github.com/carosteguig/capstone-server**
+
+Install server dependencies
+
+**$ npm install**
+
+Start the server
+
+**$ node index.js**
+
+Clone the server repository
+
+**$ git clone https://github.com/carosteguig/capstone-client**
+
+Install server dependencies
+
+**$ npm install**
+
+Start the client
+
+**$ npm start**
+
 
 
 
